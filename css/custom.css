@@ -1,0 +1,12 @@
+.wrapper {
+  text-shadow: 0.01em 0.01em 0.01em #999;
+}
+.post-comment {
+  padding-top: 5em;
+}
+img.upyun-logo {
+  height: 20px;
+}
+.footer {
+  height: 4rem;
+}
