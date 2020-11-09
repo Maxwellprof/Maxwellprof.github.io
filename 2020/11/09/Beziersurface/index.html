@@ -241,7 +241,9 @@ V_{3,0} & V_{3,1} & V_{3,2} &V_{3,3}
 <script type="math/tex; mode=display">
 J_{n,i}(u) = C_n^iu^i(1-u)^{n-i}</script><p>先对顶点矩阵 $V$ 中每一列的四个顶点构成一条以 $u$ 为参数的三次 $bezier$ 曲线,共可得到四条三次 $bezier$ 曲线</p>
 <script type="math/tex; mode=display">
-\vec{S}_n(u) = \sum_{i=0}^3J_{3,i}(u)V_{i,n},0\leq u \leq 1</script><p>给定一个 $u$ 值,令 $ u = u^<em>$ ,那么在上述得到的曲线中分别代入 $u^</em>$ 可得另一条以 $w$ 为参数的曲线</p>
+\vec{S}_n(u) = \sum_{i=0}^3J_{3,i}(u)V_{i,n},0\leq u \leq 1</script><p>给定一个 $u$ 值,令 </p>
+<script type="math/tex; mode=display">
+ u = u^*</script><p> 那么在上述得到的曲线中分别代入 $u^{*}$ 可得另一条以 $w$ 为参数的曲线</p>
 <script type="math/tex; mode=display">
 \vec{Q}(w) = \sum_{j=0}^3J_{3,j}(w)\vec{S}_j(u^*) ,0\leq w \leq 1</script><p>给出映射</p>
 <script type="math/tex; mode=display">
