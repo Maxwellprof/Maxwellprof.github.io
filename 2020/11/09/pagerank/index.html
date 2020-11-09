@@ -10,7 +10,7 @@
 
 
 
-<title>Beziersurface | MAXWELL</title>
+<title>基于PageRank的节点重要性评估方法 | MAXWELL</title>
 
 
 
@@ -214,14 +214,14 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Beziersurface</h1>
+            <h1 class="post-title">基于PageRank的节点重要性评估方法</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;20:20:59</a>
+                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;23:13:37</a>
                         </span>
                     
                     
@@ -230,47 +230,42 @@
         </header>
 
         <div class="post-content">
-            <h1 id="Bezier-surface"><a href="#Bezier-surface" class="headerlink" title="Bezier surface"></a>Bezier surface</h1><h4 id="以双三次曲面为例"><a href="#以双三次曲面为例" class="headerlink" title="以双三次曲面为例"></a>以双三次曲面为例</h4><p>设在三维空间给出16个点,构成一张双三次 $bezier$ 曲面的特征多边形网格,在 $u,w$ 方向上分布.点的位置用矢量 $V_{i,j}(i,j=0,1,2,3)$ 表示,形成一个 $4*4$ 的顶点矩阵</p>
+            <h2 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h2><p>PageRank用于衡量特定网页相对于搜索引擎索引中的其他网页而言的重要程度.PageRank算法的基本思想是：WWW上一个页面的重要性取决于指向它的其他页面数量和质量。针对于一般的有向网络，基本的PageRank算法可叙述如下</p>
+<ol>
+<li><p>初始步:给定所有节点的初始PageRank值(简称PR值) <script type="math/tex">PR_{i}(0),i=1,2,...,N</script> ,满足</p>
 <script type="math/tex; mode=display">
-V=
-\begin{bmatrix} V_{0,0} & V_{0,1} & V_{0,2} &V_{0,3}
-\\ V_{1,0} & V_{1,1} & V_{1,2} &V_{1,3}\\
-V_{2,0} & V_{2,1} & V_{2,2} &V_{2,3}\\
-V_{3,0} & V_{3,1} & V_{3,2} &V_{3,3}
-\end{bmatrix}</script><p>定义 $Bernstein$ 基函数为 $J_{n,j}(u)$</p>
+\sum_{i=1}^{N}PR_{i}(0)=1</script></li>
+<li><p>基本的PageRank校正规则：把每个节点在第 $k-1$ 步时的PR值平分给它所指向的节点。也就是说，如果节点$i$的出度为 <script type="math/tex">k_{i}^{out}</script> ，那么节点$i$所指向的每一个节点分得的PR值为 <script type="math/tex">PR_{i}(k-1)/k_{i}^{out}</script> 。如果一个节点的出度为0，那么它就始终把PR值只给自己。每个节点的新的PR值校正为它所分得的PR值之和，即有</p>
 <script type="math/tex; mode=display">
-J_{n,i}(u) = C_n^iu^i(1-u)^{n-i}</script><p>先对顶点矩阵 $V$ 中每一列的四个顶点构成一条以 $u$ 为参数的三次 $bezier$ 曲线,共可得到四条三次 $bezier$ 曲线</p>
+PR_{i}(k)=\sum_{j=1}^{N}a_{ji}\frac{PR_{j}(k-1)}{k_{j}^{out}}</script></li>
+</ol>
+<p>在有向网络的邻接矩阵$A=(a<em>{ij})</em>{N*N}$基础上定义基本Google矩阵</p>
 <script type="math/tex; mode=display">
-\vec{S}_n(u) = \sum_{i=0}^3J_{3,i}(u)V_{i,n},0\leq u \leq 1</script><p>给定一个 $u$ 值,令 </p>
+\overline{A}=(\overline{a}_{ij})_{N*N}</script><p>如下</p>
 <script type="math/tex; mode=display">
- u = u^*</script><p> 那么在上述得到的曲线中分别代入 $u^{*}$ 可得另一条以 $w$ 为参数的曲线</p>
+\overline{a}_{ij}=\begin{cases}
+1/k_{i}^{out},\text{如果有从节点}i\text{指向节点}j\text{的边}\\
+0,\text{否则}
+\end{cases}</script><p>可以证明：随机行走$k$步后位于节点$i$的概率就等于应用基本PageRank算法$k$步后所得到的节点$I$的PR值</p>
+<p>随机冲浪——假设一个网上的随即冲浪者，他从一个随机选择的页面开始浏览，然后在当前页面浏览一定时间后通过随机点击当前页面上的某个超文本链接而进入下一个页面浏览。随机冲浪$k$步后位于页面X的概率就等于应用基本RankPage算法$k$步后得到的页面X的PR值</p>
+<p>上述行走的规则缺陷在于，一旦达到了某个出度为0的节点，就会永远停留在该节点无法走出来。出度为0的节点也成为悬挂节点，使得算法失效</p>
+<p>对于悬挂节点的处理有一种简单的办法：假设一旦到达一个出度为0的页面，那么就以相同概率$1/N$随机地访问网络中的任一页面。即</p>
 <script type="math/tex; mode=display">
-\vec{Q}(w) = \sum_{j=0}^3J_{3,j}(w)\vec{S}_j(u^*) ,0\leq w \leq 1</script><p>给出映射</p>
+\overline{a}_{ij}=\begin{cases}
+1/k_{i}^{out},k_{i}^{out}>0\text{且有从节点}i\text{指向节点}j\text{的边}\\
+0,k_{i}^{out}>0\text{且没有从节点}i\text{指向节点}j\text{的边}\\
+1/N,k_{i}^{out}=0
+\end{cases}</script><p>但该修正并没有完全解决基本的PageRank算法的收敛性问题,算法可能不停循环而无法收敛。</p>
+<h2 id="PageRank算法"><a href="#PageRank算法" class="headerlink" title="PageRank算法"></a>PageRank算法</h2><p>解决基本的PageRank算法收敛性的有效办法是：从当前页面出发，不管该页面是否为悬挂页面，都允许以一定概率随机选取网络中的任一页面作为下一步要浏览的页面。这就是修正的随机行走规则——完全随机地选择一个初始节点。如果当前所在节点的出度大于零，那么以概率 $s(0&lt;s&lt;1)$ 在指出去的边中随机选择一条边并沿着该边到达下一个节点，以概率 $1-s$ 在整个网络上完全随机选择一个节点作为下一步要到达的节点。如果当前所在节点的出度等于0，那么完全选择一个节点作为下一步要到达的节点。</p>
+<ol>
+<li><p>初始步:给定所有节点的初始PageRank值(简称PR值) <script type="math/tex">PR_{i}(0),i=1,2,...,N</script> , 满足 <script type="math/tex">\sum_{i=1}^{N}PR_{i}(0)=1</script></p>
+</li>
+<li><p>修正的PageRank校正规则（简称PageRank校正规则）：给定一个标度常数$s\in(0,1)$。首先按照基本的PageRank校正规则计算各个节点的PR值，然后把每个节点的PR值通过比例因子$s$进行缩减。这样，所有节点的PR值之和也就缩减为$s$，再把$1-s$平均分给每个节点的PR值，以保持网络总的PR值为1.即有</p>
 <script type="math/tex; mode=display">
-(u,w) \rightarrow (x(u,w),y(u,w),z(u,w))</script><p>则</p>
-<script type="math/tex; mode=display">
-\vec{r}(u,w)=\begin{bmatrix}\vec{S}_0(u)&\vec{S}_1(u)
-&\vec{S}_2(u)&\vec{S}_3(u)\end{bmatrix}
-\begin{bmatrix}
-J_{3,0}(w) \\J_{3,1}(w) \\J_{3,2}(w) \\J_{3,3}(w) \\
-\end{bmatrix}
-\\
-0\leq u,w\leq 1</script><p>带入 $\vec{S}$ 得</p>
-<script type="math/tex; mode=display">
-\vec{r}(u,w)=\begin{bmatrix}
-J_{3,0}(u)&J_{3,q}(u)&J_{3,w}(u)&J_{3,3}(u)
-\end{bmatrix}
-V
-\begin{bmatrix}
-J_{3,0}(w) \\J_{3,1}(w) \\J_{3,2}(w) \\J_{3,3}(w) \\
-\end{bmatrix}
-\\
-0\leq u,w\leq 1</script><p>化为更一般的形式即为</p>
-<script type="math/tex; mode=display">
-\vec{r}(u,w)=\sum_{i=0}^n\sum_{j=0}^mJ_{n,j}(w)V_{i,j}\\
-0\leq u,w\leq 1</script><h4 id="matlab实现代码"><a href="#matlab实现代码" class="headerlink" title="matlab实现代码"></a><code>matlab</code>实现代码</h4><p>多用矩阵形式可以大大增加效率</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clear;</span><br><span class="line">x = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>;<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">z = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>];</span><br><span class="line">mesh(x,y,z,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;FaceColor&#x27;</span>,[<span class="number">0.9290</span> <span class="number">0.6940</span> <span class="number">0.1250</span>],<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.5</span>)</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line">syms U;</span><br><span class="line">n = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">0</span>:n</span><br><span class="line">    Bernstein(<span class="built_in">i</span>+<span class="number">1</span>) = <span class="built_in">nchoosek</span>(n,<span class="built_in">i</span>).*U.^<span class="built_in">i</span>.*(<span class="number">1</span>-U).^(n-<span class="built_in">i</span>);<span class="comment">%伯恩斯坦基函数</span></span><br><span class="line">    <span class="comment">%二项式系数的所有组合</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">k = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> u = <span class="number">0</span>:<span class="number">0.02</span>:<span class="number">1</span></span><br><span class="line">    Ju(k,:) = double(subs(Bernstein,U,u));</span><br><span class="line">    Jw(:,k) = double(subs(Bernstein,U,u)&#x27;);</span><br><span class="line">    k = k+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">X = Ju*x*Jw;</span><br><span class="line">Y = Ju*y*Jw;</span><br><span class="line">Z = Ju*z*Jw;</span><br><span class="line">mesh(X,Y,Z);</span><br></pre></td></tr></table></figure>
-<p><img src="/Maxwellprof.github.io/2020/11/09/Beziersurface/untitled.jpg" alt="untitled"></p>
+PR_{i}(k)=s\sum_{j=1}^{N}\overline{a}_{ji}PR_{j}(k-1)+(1-s)\frac{1}{N},i=1,2,...,N.</script></li>
+</ol>
+<p>可以证明:基于修正的随机行走规则行走$k$步后位于节点$i$的概率就等于应用PageRank校正规则$k$步后所得节点$i$的PR值。</p>
+<p>关于标度常数$s$的取值需要考虑收敛性和有效性的折中：如果$s=1$，那么算法将无法收敛，$s$越接近1算法收敛速度越慢；$s$越接近0算法收敛速度越快，如果$s=0$，那么算法一步收敛到所有节点均具有相同PR值的状态，但收敛值缺乏有效的意义。Page和Brin当初提出算法时，建议取$s=0.85$.</p>
 
         </div>
 
@@ -293,10 +288,6 @@ J_{3,0}(w) \\J_{3,1}(w) \\J_{3,2}(w) \\J_{3,3}(w) \\
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/Maxwellprof.github.io/tags/CAGD/"># CAGD</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -307,10 +298,8 @@ J_{3,0}(w) \\J_{3,1}(w) \\J_{3,2}(w) \\J_{3,3}(w) \\
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Maxwellprof.github.io/2020/11/09/pagerank/">基于PageRank的节点重要性评估方法</a>
             
-            
-            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/07/hello-world/">Hello World</a>
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/09/Beziersurface/">Beziersurface</a>
             
         </section>
 
