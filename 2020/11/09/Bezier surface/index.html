@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>Bezier surface | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Bezier surface</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;20:20:59</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Bezier-surface"><a href="#Bezier-surface" class="headerlink" title="Bezier surface"></a>Bezier surface</h1><h4 id="以双三次曲面为例"><a href="#以双三次曲面为例" class="headerlink" title="以双三次曲面为例"></a>以双三次曲面为例</h4><p>设在三维空间给出16个点,构成一张双三次 $bezier$ 曲面的特征多边形网格,在 $u,w$ 方向上分布.点的位置用矢量 $V_{i,j}(i,j=0,1,2,3)$ 表示,形成一个 $4*4$ 的顶点矩阵<br>$$<br>V=<br>\begin{bmatrix} V_{0,0} &amp; V_{0,1} &amp; V_{0,2} &amp;V_{0,3}<br>\ V_{1,0} &amp; V_{1,1} &amp; V_{1,2} &amp;V_{1,3}\<br>V_{2,0} &amp; V_{2,1} &amp; V_{2,2} &amp;V_{2,3}\<br>V_{3,0} &amp; V_{3,1} &amp; V_{3,2} &amp;V_{3,3}<br>\end{bmatrix}<br>$$</p>
+<p>定义 $Bernstein$ 基函数为 $J_{n,j}(u)$<br>$$<br>J_{n,i}(u) = C_n^iu^i(1-u)^{n-i}<br>$$<br>先对顶点矩阵 $V$ 中每一列的四个顶点构成一条以 $u$ 为参数的三次 $bezier$ 曲线,共可得到四条三次 $bezier$ 曲线<br>$$<br>\vec{S}<em>n(u) = \sum</em>{i=0}^3J_{3,i}(u)V_{i,n},0\leq u \leq 1<br>$$</p>
+<p>给定一个 $u$ 值,令 $ u = u^*$ ,那么在上述得到的曲线中分别代入 $u^*$ 可得另一条以 $w$ 为参数的曲线<br>$$<br>\vec{Q}(w) = \sum_{j=0}^3J_{3,j}(w)\vec{S}<em>j(u^*) ,0\leq w \leq 1<br>$$<br>给出映射<br>$$<br>(u,w) \rightarrow (x(u,w),y(u,w),z(u,w))<br>$$<br>则<br>$$<br>\vec{r}(u,w)=\begin{bmatrix}\vec{S}_0(u)&amp;\vec{S}_1(u)<br>&amp;\vec{S}_2(u)&amp;\vec{S}_3(u)\end{bmatrix}<br>\begin{bmatrix}<br>J</em>{3,0}(w) \J_{3,1}(w) \J_{3,2}(w) \J_{3,3}(w) \<br>\end{bmatrix}<br>\<br>0\leq u,w\leq 1<br>$$<br>带入 $\vec{S}$ 得<br>$$<br>\vec{r}(u,w)=\begin{bmatrix}<br>J_{3,0}(u)&amp;J_{3,q}(u)&amp;J_{3,w}(u)&amp;J_{3,3}(u)<br>\end{bmatrix}<br>V<br>\begin{bmatrix}<br>J_{3,0}(w) \J_{3,1}(w) \J_{3,2}(w) \J_{3,3}(w) \<br>\end{bmatrix}<br>\<br>0\leq u,w\leq 1<br>$$<br>化为更一般的形式即为<br>$$<br>\vec{r}(u,w)=\sum_{i=0}^n\sum_{j=0}^mJ_{n,j}(w)V_{i,j}\<br>0\leq u,w\leq 1<br>$$</p>
+<h4 id="matlab实现代码"><a href="#matlab实现代码" class="headerlink" title="matlab实现代码"></a><code>matlab</code>实现代码</h4><p>多用矩阵形式可以大大增加效率</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clear;</span><br><span class="line">x = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>;<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>];</span><br><span class="line">y = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">z = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>];</span><br><span class="line">mesh(x,y,z,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;FaceColor&#x27;</span>,[<span class="number">0.9290</span> <span class="number">0.6940</span> <span class="number">0.1250</span>],<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.5</span>)</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line">syms U;</span><br><span class="line">n = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">0</span>:n</span><br><span class="line">    Bernstein(<span class="built_in">i</span>+<span class="number">1</span>) = <span class="built_in">nchoosek</span>(n,<span class="built_in">i</span>).*U.^<span class="built_in">i</span>.*(<span class="number">1</span>-U).^(n-<span class="built_in">i</span>);<span class="comment">%伯恩斯坦基函数</span></span><br><span class="line">    <span class="comment">%二项式系数的所有组合</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">k = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> u = <span class="number">0</span>:<span class="number">0.02</span>:<span class="number">1</span></span><br><span class="line">    Ju(k,:) = double(subs(Bernstein,U,u));</span><br><span class="line">    Jw(:,k) = double(subs(Bernstein,U,u)&#x27;);</span><br><span class="line">    k = k+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">X = Ju*x*Jw;</span><br><span class="line">Y = Ju*y*Jw;</span><br><span class="line">Z = Ju*z*Jw;</span><br><span class="line">mesh(X,Y,Z);</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\blog\source_posts\untitled.jpg" alt="untitled"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/Maxwellprof.github.io/tags/CAGD/"># CAGD</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/07/hello-world/">Hello World</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
