@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>基于PageRank的节点重要性评估方法 | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">基于PageRank的节点重要性评估方法</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 9, 2020&nbsp;&nbsp;23:13:37</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h2><p>PageRank用于衡量特定网页相对于搜索引擎索引中的其他网页而言的重要程度.PageRank算法的基本思想是：WWW上一个页面的重要性取决于指向它的其他页面数量和质量。针对于一般的有向网络，基本的PageRank算法可叙述如下</p>
+<ol>
+<li><p>初始步:给定所有节点的初始PageRank值(简称PR值) <script type="math/tex">PR_{i}(0),i=1,2,...,N</script> ,满足</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{N}PR_{i}(0)=1</script></li>
+<li><p>基本的PageRank校正规则：把每个节点在第 $k-1$ 步时的PR值平分给它所指向的节点。也就是说，如果节点$i$的出度为 <script type="math/tex">k_{i}^{out}</script> ，那么节点$i$所指向的每一个节点分得的PR值为 <script type="math/tex">PR_{i}(k-1)/k_{i}^{out}</script> 。如果一个节点的出度为0，那么它就始终把PR值只给自己。每个节点的新的PR值校正为它所分得的PR值之和，即有</p>
+<script type="math/tex; mode=display">
+PR_{i}(k)=\sum_{j=1}^{N}a_{ji}\frac{PR_{j}(k-1)}{k_{j}^{out}}</script></li>
+</ol>
+<p>在有向网络的邻接矩阵<script type="math/tex">A=(a_{ij})_{N*N}</script>基础上定义基本Google矩阵</p>
+<script type="math/tex; mode=display">
+\overline{A}=(\overline{a}_{ij})_{N*N}</script><p>如下</p>
+<script type="math/tex; mode=display">
+\overline{a}_{ij}=\begin{cases}
+1/k_{i}^{out},\text{如果有从节点}i\text{指向节点}j\text{的边}\\
+0,\text{否则}
+\end{cases}</script><p>可以证明：随机行走$k$步后位于节点$i$的概率就等于应用基本PageRank算法$k$步后所得到的节点$I$的PR值</p>
+<p>随机冲浪——假设一个网上的随即冲浪者，他从一个随机选择的页面开始浏览，然后在当前页面浏览一定时间后通过随机点击当前页面上的某个超文本链接而进入下一个页面浏览。随机冲浪$k$步后位于页面X的概率就等于应用基本RankPage算法$k$步后得到的页面X的PR值</p>
+<p>上述行走的规则缺陷在于，一旦达到了某个出度为0的节点，就会永远停留在该节点无法走出来。出度为0的节点也成为悬挂节点，使得算法失效</p>
+<p>对于悬挂节点的处理有一种简单的办法：假设一旦到达一个出度为0的页面，那么就以相同概率$1/N$随机地访问网络中的任一页面。即</p>
+<script type="math/tex; mode=display">
+\overline{a}_{ij}=\begin{cases}
+1/k_{i}^{out},k_{i}^{out}>0\\
+0,k_{i}^{out}>0\\
+1/N,k_{i}^{out}=0
+\end{cases}</script><p>但该修正并没有完全解决基本的PageRank算法的收敛性问题,算法可能不停循环而无法收敛。</p>
+<h2 id="PageRank算法"><a href="#PageRank算法" class="headerlink" title="PageRank算法"></a>PageRank算法</h2><p>解决基本的PageRank算法收敛性的有效办法是：从当前页面出发，不管该页面是否为悬挂页面，都允许以一定概率随机选取网络中的任一页面作为下一步要浏览的页面。这就是修正的随机行走规则——完全随机地选择一个初始节点。如果当前所在节点的出度大于零，那么以概率 $s(0&lt;s&lt;1)$ 在指出去的边中随机选择一条边并沿着该边到达下一个节点，以概率 $1-s$ 在整个网络上完全随机选择一个节点作为下一步要到达的节点。如果当前所在节点的出度等于0，那么完全选择一个节点作为下一步要到达的节点。</p>
+<ol>
+<li><p>初始步:给定所有节点的初始PageRank值(简称PR值) <script type="math/tex">PR_{i}(0),i=1,2,...,N</script> , 满足 <script type="math/tex">\sum_{i=1}^{N}PR_{i}(0)=1</script></p>
+</li>
+<li><p>修正的PageRank校正规则（简称PageRank校正规则）：给定一个标度常数$s\in(0,1)$。首先按照基本的PageRank校正规则计算各个节点的PR值，然后把每个节点的PR值通过比例因子$s$进行缩减。这样，所有节点的PR值之和也就缩减为$s$，再把$1-s$平均分给每个节点的PR值，以保持网络总的PR值为1.即有</p>
+<script type="math/tex; mode=display">
+PR_{i}(k)=s\sum_{j=1}^{N}\overline{a}_{ji}PR_{j}(k-1)+(1-s)\frac{1}{N},i=1,2,...,N.</script></li>
+</ol>
+<p>可以证明:基于修正的随机行走规则行走$k$步后位于节点$i$的概率就等于应用PageRank校正规则$k$步后所得节点$i$的PR值。</p>
+<p>关于标度常数$s$的取值需要考虑收敛性和有效性的折中：如果$s=1$，那么算法将无法收敛，$s$越接近1算法收敛速度越慢；$s$越接近0算法收敛速度越快，如果$s=0$，那么算法一步收敛到所有节点均具有相同PR值的状态，但收敛值缺乏有效的意义。Page和Brin当初提出算法时，建议取$s=0.85$.</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Maxwellprof.github.io/2020/11/10/%E5%B8%A6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/">带服务器的任务调度问题</a>
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/09/Beziersurface/">Beziersurface</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
