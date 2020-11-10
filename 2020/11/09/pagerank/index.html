@@ -252,8 +252,8 @@ PR_{i}(k)=\sum_{j=1}^{N}a_{ji}\frac{PR_{j}(k-1)}{k_{j}^{out}}</script></li>
 <p>对于悬挂节点的处理有一种简单的办法：假设一旦到达一个出度为0的页面，那么就以相同概率$1/N$随机地访问网络中的任一页面。即</p>
 <script type="math/tex; mode=display">
 \overline{a}_{ij}=\begin{cases}
-1/k_{i}^{out},k_{i}^{out}>0\text{且有从节点}i\text{指向节点}j\text{的边}\\
-0,k_{i}^{out}>0\text{且没有从节点}i\text{指向节点}j\text{的边}\\
+1/k_{i}^{out},k_{i}^{out}>0\\
+0,k_{i}^{out}>0\\
 1/N,k_{i}^{out}=0
 \end{cases}</script><p>但该修正并没有完全解决基本的PageRank算法的收敛性问题,算法可能不停循环而无法收敛。</p>
 <h2 id="PageRank算法"><a href="#PageRank算法" class="headerlink" title="PageRank算法"></a>PageRank算法</h2><p>解决基本的PageRank算法收敛性的有效办法是：从当前页面出发，不管该页面是否为悬挂页面，都允许以一定概率随机选取网络中的任一页面作为下一步要浏览的页面。这就是修正的随机行走规则——完全随机地选择一个初始节点。如果当前所在节点的出度大于零，那么以概率 $s(0&lt;s&lt;1)$ 在指出去的边中随机选择一条边并沿着该边到达下一个节点，以概率 $1-s$ 在整个网络上完全随机选择一个节点作为下一步要到达的节点。如果当前所在节点的出度等于0，那么完全选择一个节点作为下一步要到达的节点。</p>
@@ -297,6 +297,8 @@ PR_{i}(k)=s\sum_{j=1}^{N}\overline{a}_{ji}PR_{j}(k-1)+(1-s)\frac{1}{N},i=1,2,...
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/Maxwellprof.github.io/2020/11/10/%E5%B8%A6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/">带服务器的任务调度问题</a>
             
             
             <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/09/Beziersurface/">Beziersurface</a>
