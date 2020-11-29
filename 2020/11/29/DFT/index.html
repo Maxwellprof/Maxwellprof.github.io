@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>三角插值与DFT | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">三角插值与DFT</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 29, 2020&nbsp;&nbsp;17:08:23</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h1><p>设<script type="math/tex">f(x)</script>是以<script type="math/tex">2/pi</script>为周期的平方可积函数,用三角多项式</p>
+<script type="math/tex; mode=display">
+S_n(x)=1/2a_0+a_1\cos x+b_1\sin x+...+a_n\cos nx+b_n\sin nx</script><p>做最佳平方逼近函数,由于三角函数族</p>
+<script type="math/tex; mode=display">
+1,\cos x,\sin x,...,\cos kx, \sin kx ,...</script><p>在<script type="math/tex">[0,2\pi]</script> 上是正交函数族,于是<script type="math/tex">f(x)</script>在<script type="math/tex">[0,2\pi]</script>上的最佳平方三角逼近多项式<script type="math/tex">S_n(x)</script>的系数是</p>
+<script type="math/tex; mode=display">
+a_k=\frac{1}{\pi}\int^{2\pi}_0f(x)\cos kx dx,k=0,1,...,n,\\
+b_k=\frac{1}{\pi}\int^{2\pi}_0f(x)\sin kx dx,k=1,2,...,n,</script><script type="math/tex; mode=display">a_k,b_k$$称为傅里叶系数,函数$$f(x)$$按傅里叶系数展开得到的级数</script><p>\frac{1}{2}a<em>0+\sum^{\infty}</em>{k=1}(a_k\cos kx+b_k\sin kx)</p>
+<script type="math/tex; mode=display">
+就称为**傅里叶级数** ,只要$${f}'(x)$$在$$[0,2\pi]$$上分段连续,则级数一致收敛到$$f(x)$$,收敛定理的证明不做说明.
+
+# 离散点集
+
+当$$f(x)$$只在给定点离散点集$$\left \{ x_j=\frac{2\pi}{N}j,j=0,1,...,N-1 \right \}$$ 上已知时,则可类似的得到离散点集的正交性与相应的离散傅里叶系数.为方便起见,下面只给出奇数个点的情况,令</script><p>x_j=\frac{2\pi j}{2m+1},j =0,1,…,2m,</p>
+<script type="math/tex; mode=display">
+可以证明对任何$$k,l=0,1,...,m$$成立</script><p>\sum^{2m}<em>{j=0}\sin lx_j\sin kx_j=\left{\begin{matrix} 0,&amp;l\neq k,l=k=0  \  \dfrac{2m+1}{2},&amp;l=k\neq 0  \end{matrix}\right.\\sum^{2m}</em>{j=0}\cos lx<em>j\cos kx_j=\left{\begin{matrix} 0,&amp;l\neq k  \  \dfrac{2m+1}{2},&amp;l=k\neq 0 \ 2m+1,&amp;l=k=0\end{matrix}\right.\\sum^{2m}</em>{j=0}\cos lx_j\sin kx_j=0,0\leq k,j\leq m</p>
+<script type="math/tex; mode=display">
+这表明函数族$$\left \{ 1,\cos x,\sin x,...,\cos mx, \sin mx \right \}$$在点集$$\left \{ x_j=\frac{2\pi j}{2m+1} \right \}$$上正交,若令$$f_j=f(x_j)(j=0,1,...,2m)$$,则$$f(x)$$的最小二乘逼近为</script><p>S<em>n(x)=1/2a_0+\sum</em>{k=1}^n(a_k)\cos kx+b_k\sin kx),n&lt;m</p>
+<script type="math/tex; mode=display">
+其中</script><p>a<em>k=\frac{2}{2m+1}\sum</em>{j=0}^{2m}\cos \frac{2\pi jk}{2m+1},k=0,1,..,n,\b<em>k=\frac{2}{2m+1}\sum</em>{j=0}^{2m}\sin \frac{2\pi jk}{2m+1},k=0,1,..,n,</p>
+<script type="math/tex; mode=display">
+当$$n=m$$时,可证明</script><p>S_m(x_j)=f_j,j=0,1,…,2m,</p>
+<script type="math/tex; mode=display">
+于是</script><p>S<em>m(x)=\frac{1}{2}a_0+\sum</em>{k=1}{m}(a_k\cos kx+b_k\sin kx)</p>
+<script type="math/tex; mode=display">
+就是三角插值多项式
+
+更一般的情形,假定$$f(x)$$时以$$2\pi$$为周期的夫函数,给定$$f(x)$$在$$N$$个等分点$$x_j=\frac{2\pi }{N}j(j=0,1,...,N-1)$$上的值$$f_j = f(\frac{2\pi }{N}j)$$,由于</script><p>e^{ijx}=\cos (jx)+i\sin (jx),j=0,1,…,N-1,i = \sqrt(-1)</p>
+<script type="math/tex; mode=display">
+函数$$e^{ijx}$$在等距点集$$x_k = \frac{2\pi } {N} k(k=0,1,...,N-1)$$上的值$$e^{ijx_k}$$组成的向量记作</script><p>\phi_j = (1,e^{ij\frac{2\pi}{N}},…,e^{ij\frac{2\pi}{N-1}})^T</p>
+<script type="math/tex; mode=display">
+当$$j=0,1,...,N-1$$时,$$N$$个复向量$$\phi_0,\phi_1,...\phi_{N_1}$$具有下面所定义的正交性</script><p>(\phi<em>l,\phi_s)=\sum</em>{k=0}^{N-1}e^{il\frac{2\pi}{N}k}e^{-is\frac{2\pi}{N}k}=\sum_{k=0}^{N-1}e^{i(l-s)\frac{2\pi}{N}k}=\left{\begin{matrix} 0,&amp;l\neq s \  N,&amp;l=s\end{matrix}\right.\</p>
+<script type="math/tex; mode=display">
+因此,$$f(x)$$在$$N$$个点$$\left \{ x_j=\frac{2\pi}{N}j,j=0,1,...,N-1 \right \}$$上的最小二乘傅里叶逼近为</script><p>S(x)=\sum_{k=0}^{n-1}c_ke^{ikx},n\leq N</p>
+<script type="math/tex; mode=display">
+其中</script><p>c<em>k=\frac{1}{N}\sum</em>{j=0}^{N-1}f_je^{-ikj\frac{2\pi}{N}},k=0,1,..,n-1</p>
+<p><script type="math/tex">若令</script>n=N<script type="math/tex">则</script>S(x_j)=f(x_j)<script type="math/tex">,由</script>{f_j}<script type="math/tex">求</script>{c_k}<script type="math/tex">的过程称为</script>f(x)$$的<strong>离散傅里叶变换</strong>简称,<strong>DFT</strong>. </p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/Maxwellprof.github.io/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"># 数值分析</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/10/%E5%B8%A6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/">带服务器的任务调度问题</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
