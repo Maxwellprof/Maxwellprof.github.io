@@ -10,7 +10,7 @@
 
 
 
-<title>三角插值与DFT | MAXWELL</title>
+<title>Fourier spectrum | MAXWELL</title>
 
 
 
@@ -214,14 +214,14 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">三角插值与DFT</h1>
+            <h1 class="post-title">Fourier spectrum</h1>
             
                 <div class="post-meta">
                     
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 29, 2020&nbsp;&nbsp;17:08:23</a>
+                        Date: <a href="#">November 29, 2020&nbsp;&nbsp;17:19:44</a>
                         </span>
                     
                     
@@ -230,40 +230,18 @@
         </header>
 
         <div class="post-content">
-            <h1 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h1><p>设<script type="math/tex">f(x)</script>是以<script type="math/tex">2/pi</script>为周期的平方可积函数,用三角多项式</p>
-<script type="math/tex; mode=display">
-S_n(x)=1/2a_0+a_1\cos x+b_1\sin x+...+a_n\cos nx+b_n\sin nx</script><p>做最佳平方逼近函数,由于三角函数族</p>
-<script type="math/tex; mode=display">
-1,\cos x,\sin x,...,\cos kx, \sin kx ,...</script><p>在<script type="math/tex">[0,2\pi]</script> 上是正交函数族,于是<script type="math/tex">f(x)</script>在<script type="math/tex">[0,2\pi]</script>上的最佳平方三角逼近多项式<script type="math/tex">S_n(x)</script>的系数是</p>
-<script type="math/tex; mode=display">
-a_k=\frac{1}{\pi}\int^{2\pi}_0f(x)\cos kx dx,k=0,1,...,n,\\
-b_k=\frac{1}{\pi}\int^{2\pi}_0f(x)\sin kx dx,k=1,2,...,n,</script><p>其中<script type="math/tex">a_k,b_k</script>称为傅里叶系数,函数<script type="math/tex">f(x)</script>按傅里叶系数展开得到的级数</p>
-<script type="math/tex; mode=display">
-\frac{1}{2}a_0+\sum^{\infty}_{k=1}(a_k\cos kx+b_k\sin kx)</script><p>就称为<strong>傅里叶级数</strong> ,只要<script type="math/tex">{f}'(x)</script>在<script type="math/tex">[0,2\pi]</script>上分段连续,则级数一致收敛到<script type="math/tex">f(x)</script>,收敛定理的证明不做说明.</p>
-<h1 id="离散点集"><a href="#离散点集" class="headerlink" title="离散点集"></a>离散点集</h1><p>当<script type="math/tex">f(x)</script>只在给定点离散点集<script type="math/tex">\left \{ x_j=\frac{2\pi}{N}j,j=0,1,...,N-1 \right \}</script> 上已知时,则可类似的得到离散点集的正交性与相应的离散傅里叶系数.为方便起见,下面只给出奇数个点的情况,令</p>
-<script type="math/tex; mode=display">
-x_j=\frac{2\pi j}{2m+1},j =0,1,...,2m,</script><p>可以证明对任何<script type="math/tex">k,l=0,1,...,m</script>成立</p>
-<script type="math/tex; mode=display">
-\sum^{2m}_{j=0}\sin lx_j\sin kx_j=\left\{\begin{matrix} 0,&l\neq k,l=k=0  \\  \dfrac{2m+1}{2},&l=k\neq 0  \end{matrix}\right.\\\sum^{2m}_{j=0}\cos lx_j\cos kx_j=\left\{\begin{matrix} 0,&l\neq k  \\  \dfrac{2m+1}{2},&l=k\neq 0 \\ 2m+1,&l=k=0\end{matrix}\right.\\\sum^{2m}_{j=0}\cos lx_j\sin kx_j=0,0\leq k,j\leq m</script><p>这表明函数族<script type="math/tex">\left \{ 1,\cos x,\sin x,...,\cos mx, \sin mx \right \}</script>在点集<script type="math/tex">\left \{ x_j=\frac{2\pi j}{2m+1} \right \}</script>上正交,若令<script type="math/tex">f_j=f(x_j)(j=0,1,...,2m)</script>,则<script type="math/tex">f(x)</script>的最小二乘逼近为</p>
-<script type="math/tex; mode=display">
-S_n(x)=1/2a_0+\sum_{k=1}^n(a_k)\cos kx+b_k\sin kx),n<m</script><p>其中</p>
-<script type="math/tex; mode=display">
-a_k=\frac{2}{2m+1}\sum_{j=0}^{2m}\cos \frac{2\pi jk}{2m+1},k=0,1,..,n,\\b_k=\frac{2}{2m+1}\sum_{j=0}^{2m}\sin \frac{2\pi jk}{2m+1},k=0,1,..,n,</script><p>当<script type="math/tex">n=m</script>时,可证明</p>
-<script type="math/tex; mode=display">
-S_m(x_j)=f_j,j=0,1,...,2m,</script><p>于是</p>
-<script type="math/tex; mode=display">
-S_m(x)=\frac{1}{2}a_0+\sum_{k=1}{m}(a_k\cos kx+b_k\sin kx)</script><p>就是三角插值多项式</p>
-<p>更一般的情形,假定<script type="math/tex">f(x)</script>时以<script type="math/tex">2\pi</script>为周期的夫函数,给定<script type="math/tex">f(x)</script>在<script type="math/tex">N</script>个等分点<script type="math/tex">x_j=\frac{2\pi }{N}j(j=0,1,...,N-1)</script>上的值<script type="math/tex">f_j = f(\frac{2\pi }{N}j)</script>,由于</p>
-<script type="math/tex; mode=display">
-e^{ijx}=\cos (jx)+i\sin (jx),j=0,1,...,N-1,i = \sqrt(-1)</script><p>函数<script type="math/tex">e^{ijx}</script>在等距点集<script type="math/tex">x_k = \frac{2\pi } {N} k(k=0,1,...,N-1)</script>上的值<script type="math/tex">e^{ijx_k}</script>组成的向量记作</p>
-<script type="math/tex; mode=display">
-\phi_j = (1,e^{ij\frac{2\pi}{N}},...,e^{ij\frac{2\pi}{N-1}})^T</script><p>当<script type="math/tex">j=0,1,...,N-1</script>时,<script type="math/tex">N</script>个复向量<script type="math/tex">\phi_0,\phi_1,...\phi_{N_1}</script>具有下面所定义的正交性</p>
-<script type="math/tex; mode=display">
-(\phi_l,\phi_s)=\sum_{k=0}^{N-1}e^{il\frac{2\pi}{N}k}e^{-is\frac{2\pi}{N}k}=\sum_{k=0}^{N-1}e^{i(l-s)\frac{2\pi}{N}k}=\left\{\begin{matrix} 0,&l\neq s \\  N,&l=s\end{matrix}\right.\\</script><p>因此,<script type="math/tex">f(x)</script>在<script type="math/tex">N</script>个点<script type="math/tex">\left \{ x_j=\frac{2\pi}{N}j,j=0,1,...,N-1 \right \}</script>上的最小二乘傅里叶逼近为</p>
-<script type="math/tex; mode=display">
-S(x)=\sum_{k=0}^{n-1}c_ke^{ikx},n\leq N</script><p>其中</p>
-<script type="math/tex; mode=display">
-c_k=\frac{1}{N}\sum_{j=0}^{N-1}f_je^{-ikj\frac{2\pi}{N}},k=0,1,..,n-1</script><p>若令<script type="math/tex">n=N</script>则<script type="math/tex">S(x_j)=f(x_j)</script>,由<script type="math/tex">\{f_j\}</script>求<script type="math/tex">\{c_k\}</script>的过程称为<script type="math/tex">f(x)</script>的<strong>离散傅里叶变换</strong>简称,<strong>DFT</strong>. </p>
+            <h1 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h1><p>显示图像的傅里叶谱</p>
+<h1 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h1><ol>
+<li>显示图像<code>Fig0303(a).tif</code>的傅里叶谱。</li>
+<li>通过命令<code>fftshift</code>将图像谱的原点移动到频率矩形的中心。</li>
+<li>对(2)中的结果进行对数变换，显示变换后的谱图像</li>
+<li>显示相角图像</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% pro_6</span></span><br><span class="line"><span class="comment">%% Fourier transform</span></span><br><span class="line">clear;</span><br><span class="line">f = imread(<span class="string">&quot;Fig0203(a).tif&quot;</span>);</span><br><span class="line">f=im2double(f);</span><br><span class="line">M = <span class="built_in">size</span>(f,<span class="number">1</span>);</span><br><span class="line">N = <span class="built_in">size</span>(f,<span class="number">2</span>);</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line"><span class="comment">% Zero padding</span></span><br><span class="line">f_p = <span class="built_in">zeros</span>(<span class="number">2</span>*<span class="built_in">size</span>(f));</span><br><span class="line">f_p(<span class="number">1</span>:M,<span class="number">1</span>:N) = f; </span><br><span class="line">g = f_p;</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line"><span class="comment">% Fourier Matrix</span></span><br><span class="line">w_x = <span class="built_in">exp</span>(-<span class="built_in">i</span>*<span class="number">2</span>*<span class="built_in">pi</span>/(<span class="number">2</span>*M)*((<span class="number">0</span>:<span class="number">2</span>*M<span class="number">-1</span>)&#x27;.*(<span class="number">0</span>:<span class="number">2</span>*M<span class="number">-1</span>)));</span><br><span class="line">w_y = <span class="built_in">exp</span>(-<span class="built_in">i</span>*<span class="number">2</span>*<span class="built_in">pi</span>/(<span class="number">2</span>*N)*((<span class="number">0</span>:<span class="number">2</span>*N<span class="number">-1</span>)&#x27;.*(<span class="number">0</span>:<span class="number">2</span>*N<span class="number">-1</span>)));</span><br><span class="line">F = w_x*f_p*w_y;</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line">F_center = fftshift(F);</span><br><span class="line">F_log = <span class="built_in">log</span>(<span class="built_in">abs</span>(F_center)+<span class="number">1</span>);</span><br><span class="line">phi = <span class="built_in">atan2</span>(<span class="built_in">imag</span>(F_center),<span class="built_in">real</span>(F_center));</span><br><span class="line"><span class="built_in">figure</span>,imshow(mat2gray(f)),title(<span class="string">&quot;Original image&quot;</span>);</span><br><span class="line"><span class="built_in">figure</span>,imagesc(mat2gray(<span class="built_in">abs</span>(F))),title(<span class="string">&quot;Fourier spectrum&quot;</span>);</span><br><span class="line"><span class="built_in">figure</span>,imagesc(mat2gray(<span class="built_in">abs</span>(F_log))),title(<span class="string">&quot;Centered spectrum&quot;</span>);</span><br><span class="line"><span class="built_in">figure</span>,imagesc(mat2gray(phi)),title(<span class="string">&quot;Phase angle image&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/11/29/Fourier-spectrum/untitled.jpg" alt="untitled"></p>
+<p><img src="/Maxwellprof.github.io/2020/11/29/Fourier-spectrum/untitled2.jpg" alt="untitled"></p>
+<p><img src="/Maxwellprof.github.io/2020/11/29/Fourier-spectrum/untitled3.jpg" alt="untitled"></p>
+<p><img src="/Maxwellprof.github.io/2020/11/29/Fourier-spectrum/untitled4.jpg" alt="untitled"></p>
 
         </div>
 
@@ -287,7 +265,7 @@ c_k=\frac{1}{N}\sum_{j=0}^{N-1}f_je^{-ikj\frac{2\pi}{N}},k=0,1,..,n-1</script><p
                 <span class="tag">
                     
                     
-                        <a href="/Maxwellprof.github.io/tags/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"># 数值分析</a>
+                        <a href="/Maxwellprof.github.io/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"># 数字图像处理</a>
                     
                         
                 </span>
@@ -300,10 +278,8 @@ c_k=\frac{1}{N}\sum_{j=0}^{N-1}f_je^{-ikj\frac{2\pi}{N}},k=0,1,..,n-1</script><p
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Maxwellprof.github.io/2020/11/29/Fourier-spectrum/">Fourier spectrum</a>
             
-            
-            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/10/%E5%B8%A6%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/">带服务器的任务调度问题</a>
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/29/DFT/">三角插值与DFT</a>
             
         </section>
 
