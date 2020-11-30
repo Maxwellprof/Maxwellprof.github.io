@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>predata_1 | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">predata_1</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 30, 2020&nbsp;&nbsp;14:50:56</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing <span class="keyword">as</span> pp</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = np.array([[ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">              [ <span class="number">2.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">              [ <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>],</span><br><span class="line">              [ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure>
+<h3 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h3><p>0、直接计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列标准化</span></span><br><span class="line">X_std = (X-X.mean(axis=<span class="number">0</span>))/X.std(axis=<span class="number">0</span>)</span><br><span class="line">X_std</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  0.57735027,  1.41421356],
+       [ 1.41421356, -1.73205081, -1.41421356],
+       [-1.41421356,  0.57735027,  0.        ],
+       [ 0.        ,  0.57735027,  0.        ]])
+</code></pre><p>1、使用 pp.scale</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%timeit </span><br><span class="line">X_scaled = pp.scale(X)</span><br><span class="line">X_scaled</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  0.57735027,  1.41421356],
+       [ 1.41421356, -1.73205081, -1.41421356],
+       [-1.41421356,  0.57735027,  0.        ],
+       [ 0.        ,  0.57735027,  0.        ]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_scaled.mean(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.00000000e+00, 5.55111512e-17, 0.00000000e+00])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_scaled.std(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1., 1., 1.])
+</code></pre><p>2、使用 pp.StandardScaler 类将计算和转换分开</p>
+<p>先 fit 拟合数据，得到均值和标准差，再调用 transform 来真正转换数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scaler = pp.StandardScaler().fit(X)</span><br><span class="line">scaler</span><br></pre></td></tr></table></figure>
+<pre><code>StandardScaler(copy=True, with_mean=True, with_std=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1., 1., 2.],
+       [2., 0., 0.],
+       [0., 1., 1.],
+       [1., 1., 1.]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scaler.mean_</span><br></pre></td></tr></table></figure>
+<pre><code>array([1.  , 0.75, 1.  ])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scaler.scale_</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.70710678, 0.4330127 , 0.70710678])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_s = scaler.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_s</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  0.57735027,  1.41421356],
+       [ 1.41421356, -1.73205081, -1.41421356],
+       [-1.41421356,  0.57735027,  0.        ],
+       [ 0.        ,  0.57735027,  0.        ]])
+</code></pre><h3 id="范围标准化"><a href="#范围标准化" class="headerlink" title="范围标准化"></a>范围标准化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">X_train = np.array([[ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">                    [ <span class="number">2.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">                    [ <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>],</span><br><span class="line">                    [ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>]])</span><br><span class="line"></span><br><span class="line">min_max_scaler = pp.MinMaxScaler(feature_range=(<span class="number">-1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">X_train_minmax = min_max_scaler.fit_transform(X_train)</span><br><span class="line"></span><br><span class="line">X_train_minmax</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.,  1.,  1.],
+       [ 1., -1., -1.],
+       [-1.,  1.,  0.],
+       [ 0.,  1.,  0.]])
+</code></pre><h3 id="数据规范化"><a href="#数据规范化" class="headerlink" title="数据规范化"></a>数据规范化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X_row_normed = pp.normalize(X, norm=<span class="string">&#x27;l2&#x27;</span>)</span><br><span class="line">print(X)</span><br><span class="line">X_row_normed</span><br></pre></td></tr></table></figure>
+<pre><code>[[1. 1. 2.]
+ [2. 0. 0.]
+ [0. 1. 1.]
+ [1. 1. 1.]]
+
+
+
+
+
+array([[0.40824829, 0.40824829, 0.81649658],
+       [1.        , 0.        , 0.        ],
+       [0.        , 0.70710678, 0.70710678],
+       [0.57735027, 0.57735027, 0.57735027]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X_col_normed = pp.normalize(X, axis=<span class="number">0</span>, norm=<span class="string">&#x27;l2&#x27;</span>)</span><br><span class="line"></span><br><span class="line">X_col_normed</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.40824829, 0.57735027, 0.81649658],
+       [0.81649658, 0.        , 0.        ],
+       [0.        , 0.57735027, 0.40824829],
+       [0.40824829, 0.57735027, 0.40824829]])
+</code></pre><p>规范化 normalize 也可以使用 fit 与 transform 方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normalizer = pp.Normalizer().fit(X)</span><br><span class="line">normalizer</span><br></pre></td></tr></table></figure>
+<pre><code>Normalizer()
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">normalizer.transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.40824829, 0.40824829, 0.81649658],
+       [1.        , 0.        , 0.        ],
+       [0.        , 0.70710678, 0.70710678],
+       [0.57735027, 0.57735027, 0.57735027]])
+</code></pre><h3 id="二值化"><a href="#二值化" class="headerlink" title="二值化"></a>二值化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binarizer = pp.Binarizer().fit(X)</span><br><span class="line">binarizer</span><br></pre></td></tr></table></figure>
+<pre><code>Binarizer()
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binarizer.transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1., 1., 1.],
+       [1., 0., 0.],
+       [0., 1., 1.],
+       [1., 1., 1.]])
+</code></pre><p>可以设置二值化的阈值 threshold</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binarizer = pp.Binarizer(threshold=<span class="number">1.9</span>)</span><br><span class="line">binarizer.transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0., 0., 1.],
+       [1., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.]])
+</code></pre><h3 id="插补缺失值"><a href="#插补缺失值" class="headerlink" title="插补缺失值"></a>插补缺失值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer <span class="keyword">as</span> si</span><br><span class="line">simp = si(missing_values=np.nan, strategy=<span class="string">&#x27;mean&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_t = np.array([[<span class="number">1</span>, <span class="number">2</span>], [np.nan, <span class="number">3</span>], [<span class="number">7</span>, <span class="number">6</span>]])</span><br><span class="line">X_t</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 1.,  2.],
+       [nan,  3.],
+       [ 7.,  6.]])
+</code></pre><p>1、先根据已有数据训练插补器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">simp.fit(X_t)</span><br><span class="line"></span><br><span class="line">X = np.array([[np.nan, <span class="number">2</span>], [<span class="number">6</span>, np.nan], [<span class="number">7</span>, <span class="number">6</span>]])</span><br><span class="line">X</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>array([[nan,  2.],
+       [ 6., nan],
+       [ 7.,  6.]])
+</code></pre><p>2、再处理新数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">simp.transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[4.        , 2.        ],
+       [6.        , 3.66666667],
+       [7.        , 6.        ]])
+</code></pre><h3 id="多项式特征"><a href="#多项式特征" class="headerlink" title="多项式特征"></a>多项式特征</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures <span class="keyword">as</span> pf</span><br><span class="line"></span><br><span class="line">X = np.arange(<span class="number">3</span>).reshape(<span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0],
+       [1],
+       [2]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poly = pf(<span class="number">2</span>)</span><br><span class="line">poly.fit_transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1., 0., 0.],
+       [1., 1., 1.],
+       [1., 2., 4.]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = np.arange(<span class="number">6</span>).reshape(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0, 1],
+       [2, 3],
+       [4, 5]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poly = pf(<span class="number">3</span>)</span><br><span class="line">poly.fit_transform(X)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  1.,   0.,   1.,   0.,   0.,   1.,   0.,   0.,   0.,   1.],
+       [  1.,   2.,   3.,   4.,   6.,   9.,   8.,  12.,  18.,  27.],
+       [  1.,   4.,   5.,  16.,  20.,  25.,  64.,  80., 100., 125.]])
+</code></pre><h2 id="NumPy-方式处理特征矩阵的标准化和单位化"><a href="#NumPy-方式处理特征矩阵的标准化和单位化" class="headerlink" title="NumPy 方式处理特征矩阵的标准化和单位化"></a>NumPy 方式处理特征矩阵的标准化和单位化</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">X = np.array([[ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">              [ <span class="number">2.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">              [ <span class="number">0.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>],</span><br><span class="line">              [ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列标准化</span></span><br><span class="line">X_std = (X-X.mean(axis=<span class="number">0</span>))/X.std(axis=<span class="number">0</span>)</span><br><span class="line">X_std</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  0.57735027,  1.41421356],
+       [ 1.41421356, -1.73205081, -1.41421356],
+       [-1.41421356,  0.57735027,  0.        ],
+       [ 0.        ,  0.57735027,  0.        ]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列单位化</span></span><br><span class="line">nm = np.linalg.norm(X, axis=<span class="number">0</span>)</span><br><span class="line">X_norm = X / nm</span><br><span class="line">X_norm</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.40824829,  0.57735027,  0.81649658],
+       [ 0.81649658,  0.        ,  0.        ],
+       [ 0.        ,  0.57735027,  0.40824829],
+       [ 0.40824829,  0.57735027,  0.40824829]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/30/%E6%AF%94%E7%89%B9%E5%B9%B3%E9%9D%A2%E5%88%86%E5%B1%82/">比特平面分层</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
