@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>predata 2 Slides | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">predata 2 Slides</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 1, 2020&nbsp;&nbsp;13:22:26</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.style.use(<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">plt.rcParams[<span class="string">&quot;figure.figsize&quot;</span>] = (<span class="number">9</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>$X$ 为随机数据，经仿射变换后为 $Y$，</p>
+<script type="math/tex; mode=display">
+Y = \mathbf{A} X + C</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">A = rng.rand(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">X = rng.randn(<span class="number">800</span>, <span class="number">2</span>)</span><br><span class="line">Y = A.dot(X.T).T + np.array([<span class="number">2.0</span>, <span class="number">3.0</span>])</span><br><span class="line">X.shape, Y.shape</span><br></pre></td></tr></table></figure>
+<pre><code>((800, 2), (800, 2))
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">7.5</span>))</span><br><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.scatter(Y[:, <span class="number">0</span>], Y[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_4_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 零中心化</span></span><br><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">Y -= np.mean(Y, axis=<span class="number">0</span>)</span><br><span class="line">plt.scatter(Y[:, <span class="number">0</span>], Y[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_5_0.png" alt="png"></p>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><p>每个特征列分别计算，</p>
+<script type="math/tex; mode=display">
+Y_{i} = \dfrac{Y_{i}-mean}{std}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准化</span></span><br><span class="line">Y /= np.std(Y, axis=<span class="number">0</span>)</span><br><span class="line">plt.scatter(Y[:, <span class="number">0</span>], Y[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_7_0.png" alt="png"></p>
+<h3 id="去相关性"><a href="#去相关性" class="headerlink" title="去相关性"></a>去相关性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、零中心化</span></span><br><span class="line">Y -= np.mean(Y, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、计算协方差矩阵</span></span><br><span class="line">CoV = np.dot(Y.T, Y) / Y.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、对协方差矩阵进行奇异值分解 SVD</span></span><br><span class="line">U, S, V = np.linalg.svd(CoV)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U.shape, V.shape</span><br></pre></td></tr></table></figure>
+<pre><code>((2, 2), (2, 2))
+</code></pre><p>查看 U 和 V 是否一致</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.94922179, -0.31460769],
+       [-0.31460769,  0.94922179]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.94922179, -0.31460769],
+       [-0.31460769,  0.94922179]])
+</code></pre><p>可以将 U 的两列理解成数据的主方向。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(Y[:, <span class="number">0</span>], Y[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出主方向</span></span><br><span class="line"><span class="comment"># plt.plot([0,U[0,0]], [0,U[1,0]], c=&#x27;r&#x27;)</span></span><br><span class="line">plt.quiver([<span class="number">0</span>],[<span class="number">0</span>],[<span class="number">0</span>,U[<span class="number">0</span>,<span class="number">0</span>]], [<span class="number">0</span>,U[<span class="number">1</span>,<span class="number">0</span>]], angles=<span class="string">&quot;uv&quot;</span>, color=<span class="string">&quot;#ff5511&quot;</span>,width=<span class="number">0.005</span>, scale=<span class="number">6</span>)</span><br><span class="line"><span class="comment"># plt.plot([0,U[0,1]], [0,U[1,1]], c=&#x27;b&#x27;)</span></span><br><span class="line">plt.quiver([<span class="number">0</span>],[<span class="number">0</span>],[<span class="number">0</span>,U[<span class="number">0</span>,<span class="number">1</span>]], [<span class="number">0</span>,U[<span class="number">1</span>,<span class="number">1</span>]], angles=<span class="string">&quot;uv&quot;</span>, color=<span class="string">&quot;#1155ff&quot;</span>,width=<span class="number">0.005</span>, scale=<span class="number">12</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_15_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将已经零中心化的数据 Y 投影到 U 得到新坐标，即去除了相关性</span></span><br><span class="line">Y_rot = np.dot(Y, U)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(Y_rot[:, <span class="number">0</span>], Y_rot[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_17_0.png" alt="png"></p>
+<h3 id="白化"><a href="#白化" class="headerlink" title="白化"></a>白化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">A = rng.rand(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">X = rng.randn(<span class="number">800</span>, <span class="number">2</span>)</span><br><span class="line">Y = A.dot(X.T).T + np.array([<span class="number">2.0</span>, <span class="number">3.0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、零中心化</span></span><br><span class="line">Y -= np.mean(Y, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、计算协方差矩阵</span></span><br><span class="line">CoV = np.dot(Y.T, Y) / Y.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、对协方差矩阵进行奇异值分解SVD</span></span><br><span class="line">U, S, V = np.linalg.svd(CoV)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将已经零中心化的数据 Y 投影到 U 得到新坐标，即去除了相关性</span></span><br><span class="line">Y_rot = np.dot(Y, U)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统一各个轴上的尺度</span></span><br><span class="line">Y_white = Y_rot / np.sqrt(S + <span class="number">1e-5</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">11</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原始数据</span></span><br><span class="line">plt.subplot(<span class="number">311</span>)</span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据被变换后经零中心化</span></span><br><span class="line">plt.subplot(<span class="number">312</span>)</span><br><span class="line">plt.scatter(Y[:, <span class="number">0</span>], Y[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;g&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据被变换后再经白化后的结果</span></span><br><span class="line">plt.subplot(<span class="number">313</span>)</span><br><span class="line">plt.scatter(Y_white[:, <span class="number">0</span>], Y_white[:, <span class="number">1</span>], alpha=<span class="number">0.35</span>, c=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;equal&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_23_0.png" alt="png"></p>
+<h3 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h3><p>在机器学习中，计算两个特征 <script type="math/tex">\mathbf{X},\mathbf{Y}</script>（都是向量）的协方差公式为</p>
+<script type="math/tex; mode=display">
+\operatorname{Cov}(\mathbf{X}, \mathbf{Y})=\frac{\sum_{\mathbf{i}=1}^{\mathbf{n}}\left(\mathbf{X}_{\mathbf{i}}-\overline{\mathbf{X}}\right)\left(\mathbf{Y}_{\mathbf{i}}-\overline{\mathbf{Y}}\right)}{\mathbf{n}-1}</script><p>式中 <script type="math/tex">n</script> 表示 <script type="math/tex">n</script> 个样本。两个特征 <script type="math/tex">X</script>、<script type="math/tex">Y</script> 之间的协方差矩阵为，</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{ll}
+\operatorname{Cov}(\mathbf{X}, \mathbf{X}) & \operatorname{Cov}(\mathbf{X}, \mathbf{Y}) \\
+\operatorname{Cov}(\mathbf{Y}, \mathbf{X}) & \operatorname{Cov}(\mathbf{Y}, \mathbf{Y})
+\end{array}\right]</script><p>如果有多个特征（特征 1，特征 2，特征 3，… ，特征 <script type="math/tex">N</script>），它们的协方差矩阵为，</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{ccccc}
+\operatorname{Cov}(1,1) & \operatorname{Cov}(1,2) & \operatorname{Cov}(1,3) & \ldots & \operatorname{Cov}(1, \mathrm{~N}) \\
+\operatorname{Cov}(2,1) & \operatorname{Cov}(2,2) & \operatorname{Cov}(2,3) & \ldots & \operatorname{Cov}(2, \mathrm{~N}) \\
+\operatorname{Cov}(3,1) & \operatorname{Cov}(3,2) & \operatorname{Cov}(3,3) & \ldots & \operatorname{Cov}(3, \mathrm{~N}) \\
+\ldots & \ldots & \ldots & \ldots & \ldots \\
+\operatorname{Cov}(\mathrm{N}, 1) & \operatorname{Cov}(\mathrm{N}, 2) & \operatorname{Cov}(\mathrm{N}, 3) & \ldots & \operatorname{Cov}(\mathrm{N}, \mathrm{N})
+\end{array}\right]</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下面以两个特征为例计算协方差矩阵：</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">m = <span class="number">10</span>  <span class="comment"># 样本数</span></span><br><span class="line">n = <span class="number">2</span>   <span class="comment"># 特征数</span></span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">10</span>)</span><br><span class="line">ft_mat = np.random.randint(<span class="number">1</span>, <span class="number">100</span>, [m, n])</span><br><span class="line"> </span><br><span class="line">mean0 = np.mean(ft_mat[:, <span class="number">0</span>])  <span class="comment"># 求第一个特征列的均值，用于数据中心化</span></span><br><span class="line">mean1 = np.mean(ft_mat[:, <span class="number">1</span>])  <span class="comment"># 求第二个特征列的均值，用于数据中心化</span></span><br><span class="line"> </span><br><span class="line">cov = np.<span class="built_in">sum</span>((ft_mat[:, <span class="number">0</span>] - mean0) * (ft_mat[:, <span class="number">1</span>] - mean1))/(m<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;My cov:       &#x27;</span>, cov)</span><br><span class="line">print(<span class="string">&#x27;cov matrix: &#x27;</span>)</span><br><span class="line">print(np.cov(ft_mat.T))  <span class="comment"># 计算特征列之间的协方差矩阵</span></span><br></pre></td></tr></table></figure>
+<pre><code>My cov:        517.1111111111112
+cov matrix: 
+[[ 695.73333333  517.11111111]
+ [ 517.11111111 1205.11111111]]
+</code></pre><h4 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h4><p>相关系数是最早由统计学家卡尔·皮尔逊设计的统计指标，是研究<strong>变量之间线性相关程度</strong>的量，一般用字母 r 表示。</p>
+<p>皮尔逊相关系数定义为，</p>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/1.png" alt="image"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10 个样本，2个特征</span></span><br><span class="line">X = np.random.rand(<span class="number">10</span>, <span class="number">2</span>)  </span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.77132064, 0.02075195],
+       [0.63364823, 0.74880388],
+       [0.49850701, 0.22479665],
+       [0.19806286, 0.76053071],
+       [0.16911084, 0.08833981],
+       [0.68535982, 0.95339335],
+       [0.00394827, 0.51219226],
+       [0.81262096, 0.61252607],
+       [0.72175532, 0.29187607],
+       [0.91777412, 0.71457578]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.std(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.2961448 , 0.30197226])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准化 </span></span><br><span class="line">X =(X - X.mean(axis=<span class="number">0</span>))/X.std(axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.77701798, -1.56314591],
+       [ 0.31213591,  0.84784353],
+       [-0.14419904, -0.88743915],
+       [-1.15871676,  0.88667766],
+       [-1.25647984, -1.33932447],
+       [ 0.48675179,  1.52535432],
+       [-1.81418867,  0.06428938],
+       [ 0.91647786,  0.39655104],
+       [ 0.60964943, -0.66530146],
+       [ 1.27155133,  0.73449505]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.std(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1., 1.])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.T@X/(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.        , 0.13510574],
+       [0.13510574, 1.        ]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># numpy 计算特征之间的相关系数矩阵</span></span><br><span class="line">np.corrcoef(X.T)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.        , 0.13510574],
+       [0.13510574, 1.        ]])
+</code></pre><h3 id="相关系数图例"><a href="#相关系数图例" class="headerlink" title="相关系数图例"></a>相关系数图例</h3><p>下图是几组 (x, y) 的点集，以及各个点集中 x 和 y 之间的相关系数。</p>
+<p>我们可以发现相关系数反映的是变量之间的线性关系和相关性的方向（第一排），而不是相关性的斜率（中间），也不是各种非线性关系（第三排）。</p>
+<p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/2.png" alt="image2"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算皮尔逊相关系数</span></span><br><span class="line">stats.pearsonr(X[:,<span class="number">0</span>], X[:,<span class="number">1</span>])[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>0.13510573553281616
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/Maxwellprof.github.io/tags/predata/"># predata</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/11/30/predata-1/">predata_1</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
