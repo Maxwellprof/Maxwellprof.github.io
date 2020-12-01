@@ -38,6 +38,45 @@
     
     
         
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
     
 
 
@@ -193,7 +232,7 @@
         <div class="post-content">
             <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.style.use(<span class="string">&#x27;ggplot&#x27;</span>)</span><br><span class="line">plt.rcParams[<span class="string">&quot;figure.figsize&quot;</span>] = (<span class="number">9</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>$X$ 为随机数据，经仿射变换后为 $Y$，</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>令<script type="math/tex">X</script> 为随机数据，经仿射变换后为 <script type="math/tex">Y</script></p>
 <script type="math/tex; mode=display">
 Y = \mathbf{A} X + C</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">A = rng.rand(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">X = rng.randn(<span class="number">800</span>, <span class="number">2</span>)</span><br><span class="line">Y = A.dot(X.T).T + np.array([<span class="number">2.0</span>, <span class="number">3.0</span>])</span><br><span class="line">X.shape, Y.shape</span><br></pre></td></tr></table></figure>
 <pre><code>((800, 2), (800, 2))
@@ -229,12 +268,12 @@ Y_{i} = \dfrac{Y_{i}-mean}{std}</script><figure class="highlight python"><table>
 <p><img src="/Maxwellprof.github.io/2020/12/01/predata-2-Slides/output_23_0.png" alt="png"></p>
 <h3 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h3><p>在机器学习中，计算两个特征 <script type="math/tex">\mathbf{X},\mathbf{Y}</script>（都是向量）的协方差公式为</p>
 <script type="math/tex; mode=display">
-\operatorname{Cov}(\mathbf{X}, \mathbf{Y})=\frac{\sum_{\mathbf{i}=1}^{\mathbf{n}}\left(\mathbf{X}_{\mathbf{i}}-\overline{\mathbf{X}}\right)\left(\mathbf{Y}_{\mathbf{i}}-\overline{\mathbf{Y}}\right)}{\mathbf{n}-1}</script><p>式中 <script type="math/tex">n</script> 表示 <script type="math/tex">n</script> 个样本。两个特征 <script type="math/tex">X</script>、<script type="math/tex">Y</script> 之间的协方差矩阵为，</p>
+\operatorname{Cov}(\mathbf{X}, \mathbf{Y})=\frac{\sum_{\mathbf{i}=1}^{\mathbf{n}}\left(\mathbf{X}_{\mathbf{i}}-\overline{\mathbf{X}}\right)\left(\mathbf{Y}_{\mathbf{i}}-\overline{\mathbf{Y}}\right)}{\mathbf{n}-1}</script><p>式中 <script type="math/tex">n</script> 表示 <script type="math/tex">n</script> 个样本。两个特征 <script type="math/tex">X</script>、<script type="math/tex">Y</script> 之间的协方差矩阵为</p>
 <script type="math/tex; mode=display">
 \left[\begin{array}{ll}
 \operatorname{Cov}(\mathbf{X}, \mathbf{X}) & \operatorname{Cov}(\mathbf{X}, \mathbf{Y}) \\
 \operatorname{Cov}(\mathbf{Y}, \mathbf{X}) & \operatorname{Cov}(\mathbf{Y}, \mathbf{Y})
-\end{array}\right]</script><p>如果有多个特征（特征 1，特征 2，特征 3，… ，特征 <script type="math/tex">N</script>），它们的协方差矩阵为，</p>
+\end{array}\right]</script><p>如果有多个特征（特征 1，特征 2，特征 3，… ，特征 <script type="math/tex">N</script>），它们的协方差矩阵为</p>
 <script type="math/tex; mode=display">
 \left[\begin{array}{ccccc}
 \operatorname{Cov}(1,1) & \operatorname{Cov}(1,2) & \operatorname{Cov}(1,3) & \ldots & \operatorname{Cov}(1, \mathrm{~N}) \\
