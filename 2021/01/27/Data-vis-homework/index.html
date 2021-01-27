@@ -1,0 +1,3011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+<title>Data_vis_homework | MAXWELL</title>
+
+
+
+    <link rel="icon" href="/Maxwellprof.github.io/fav.PNG">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/Maxwellprof.github.io/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/Maxwellprof.github.io/js/script.js"></script>
+    
+    <script src="/Maxwellprof.github.io/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/Maxwellprof.github.io/">MAXWELL&#39;S BLOG</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/archives">Posts</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/category">Categories</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/tag">Tags</a>
+                
+                    <a class="menu-item" href="/Maxwellprof.github.io/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Data_vis_homework</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 27, 2021&nbsp;&nbsp;16:50:26</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="通过葡萄酒的各个性质变量预测其质量"><a href="#通过葡萄酒的各个性质变量预测其质量" class="headerlink" title="通过葡萄酒的各个性质变量预测其质量"></a>通过葡萄酒的各个性质变量预测其质量</h1><h4 id="总结在文档最后面"><a href="#总结在文档最后面" class="headerlink" title="总结在文档最后面"></a>总结在文档最后面</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix, classification_report</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler, LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV, cross_val_score</span><br><span class="line">sns.set_style(<span class="string">&#x27;darkgrid&#x27;</span>)</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="探索数据的性质"><a href="#探索数据的性质" class="headerlink" title="探索数据的性质"></a>探索数据的性质</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data= pd.read_csv(<span class="string">&quot;winequality-red.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.info()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1599 entries, 0 to 1598
+Data columns (total 12 columns):
+fixed acidity           1599 non-null float64
+volatile acidity        1599 non-null float64
+citric acid             1599 non-null float64
+residual sugar          1599 non-null float64
+chlorides               1599 non-null float64
+free sulfur dioxide     1599 non-null float64
+total sulfur dioxide    1599 non-null float64
+density                 1599 non-null float64
+pH                      1599 non-null float64
+sulphates               1599 non-null float64
+alcohol                 1599 non-null float64
+quality                 1599 non-null int64
+dtypes: float64(11), int64(1)
+memory usage: 150.0 KB
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1599, 12)
+</code></pre><h2 id="单变量分析"><a href="#单变量分析" class="headerlink" title="单变量分析"></a>单变量分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>,<span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">cols = [<span class="string">&#x27;fixed acidity&#x27;</span>, <span class="string">&#x27;volatile acidity&#x27;</span>, <span class="string">&#x27;citric acid&#x27;</span>, <span class="string">&#x27;residual sugar&#x27;</span>, <span class="string">&#x27;chlorides&#x27;</span>, <span class="string">&#x27;free sulfur dioxide&#x27;</span>, <span class="string">&#x27;total sulfur dioxide&#x27;</span>, <span class="string">&#x27;density&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>, <span class="string">&#x27;sulphates&#x27;</span>, <span class="string">&#x27;alcohol&#x27;</span>]</span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols:</span><br><span class="line">    fig.add_subplot(<span class="number">3</span>,<span class="number">4</span>,count)</span><br><span class="line">    sns.distplot(x=data[col])</span><br><span class="line"></span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_8_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>,<span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">cols = [<span class="string">&#x27;fixed acidity&#x27;</span>, <span class="string">&#x27;volatile acidity&#x27;</span>, <span class="string">&#x27;citric acid&#x27;</span>, <span class="string">&#x27;residual sugar&#x27;</span>, <span class="string">&#x27;chlorides&#x27;</span>, <span class="string">&#x27;free sulfur dioxide&#x27;</span>, <span class="string">&#x27;total sulfur dioxide&#x27;</span>, <span class="string">&#x27;density&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>, <span class="string">&#x27;sulphates&#x27;</span>, <span class="string">&#x27;alcohol&#x27;</span>]</span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols:</span><br><span class="line">    fig.add_subplot(<span class="number">3</span>,<span class="number">4</span>,count)</span><br><span class="line">    sns.barplot(y=data[col],x=data[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_9_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>,<span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">cols = [<span class="string">&#x27;fixed acidity&#x27;</span>, <span class="string">&#x27;volatile acidity&#x27;</span>, <span class="string">&#x27;citric acid&#x27;</span>, <span class="string">&#x27;residual sugar&#x27;</span>, <span class="string">&#x27;chlorides&#x27;</span>, <span class="string">&#x27;free sulfur dioxide&#x27;</span>, <span class="string">&#x27;total sulfur dioxide&#x27;</span>, <span class="string">&#x27;density&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>, <span class="string">&#x27;sulphates&#x27;</span>, <span class="string">&#x27;alcohol&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols:</span><br><span class="line">    fig.add_subplot(<span class="number">3</span>,<span class="number">4</span>,count)</span><br><span class="line">    sns.violinplot(x=data[<span class="string">&#x27;quality&#x27;</span>],y=data[col])</span><br><span class="line"></span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_10_0.png" alt="png"></p>
+<h3 id="箱型图"><a href="#箱型图" class="headerlink" title="箱型图"></a>箱型图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>,<span class="number">12</span>))</span><br><span class="line"></span><br><span class="line">cols = [<span class="string">&#x27;fixed acidity&#x27;</span>, <span class="string">&#x27;volatile acidity&#x27;</span>, <span class="string">&#x27;citric acid&#x27;</span>, <span class="string">&#x27;residual sugar&#x27;</span>, <span class="string">&#x27;chlorides&#x27;</span>, <span class="string">&#x27;free sulfur dioxide&#x27;</span>, <span class="string">&#x27;total sulfur dioxide&#x27;</span>, <span class="string">&#x27;density&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>, <span class="string">&#x27;sulphates&#x27;</span>, <span class="string">&#x27;alcohol&#x27;</span>]</span><br><span class="line"></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols:</span><br><span class="line">    fig.add_subplot(<span class="number">3</span>,<span class="number">4</span>,count)</span><br><span class="line">    sns.boxplot(y=data[col],data=data)</span><br><span class="line"></span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_12_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.distplot(data[<span class="string">&#x27;quality&#x27;</span>], kde=<span class="literal">False</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_13_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = np.sort(data[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">y = np.arange(<span class="number">1</span>, <span class="built_in">len</span>(x)+<span class="number">1</span>) / <span class="built_in">len</span>(x)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y, marker=<span class="string">&#x27;.&#x27;</span>, linestyle=<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Wine quality&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;CDF&#x27;</span>)</span><br><span class="line">plt.margins(<span class="number">0.02</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_14_0.png" alt="png"></p>
+<p>使用累积分布函数(CDF),我们观察到质量为6或以下的葡萄酒几乎占我们样本的90%,高质量的葡萄酒仅占剩下的10%.</p>
+<p>接着查看数据的统计信息,检查是否有异常值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.describe(include=<span class="string">&#x27;all&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+      <td>1599.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>8.319637</td>
+      <td>0.527821</td>
+      <td>0.270976</td>
+      <td>2.538806</td>
+      <td>0.087467</td>
+      <td>15.874922</td>
+      <td>46.467792</td>
+      <td>0.996747</td>
+      <td>3.311113</td>
+      <td>0.658149</td>
+      <td>10.422983</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.741096</td>
+      <td>0.179060</td>
+      <td>0.194801</td>
+      <td>1.409928</td>
+      <td>0.047065</td>
+      <td>10.460157</td>
+      <td>32.895324</td>
+      <td>0.001887</td>
+      <td>0.154386</td>
+      <td>0.169507</td>
+      <td>1.065668</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.600000</td>
+      <td>0.120000</td>
+      <td>0.000000</td>
+      <td>0.900000</td>
+      <td>0.012000</td>
+      <td>1.000000</td>
+      <td>6.000000</td>
+      <td>0.990070</td>
+      <td>2.740000</td>
+      <td>0.330000</td>
+      <td>8.400000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7.100000</td>
+      <td>0.390000</td>
+      <td>0.090000</td>
+      <td>1.900000</td>
+      <td>0.070000</td>
+      <td>7.000000</td>
+      <td>22.000000</td>
+      <td>0.995600</td>
+      <td>3.210000</td>
+      <td>0.550000</td>
+      <td>9.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.900000</td>
+      <td>0.520000</td>
+      <td>0.260000</td>
+      <td>2.200000</td>
+      <td>0.079000</td>
+      <td>14.000000</td>
+      <td>38.000000</td>
+      <td>0.996750</td>
+      <td>3.310000</td>
+      <td>0.620000</td>
+      <td>10.200000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>9.200000</td>
+      <td>0.640000</td>
+      <td>0.420000</td>
+      <td>2.600000</td>
+      <td>0.090000</td>
+      <td>21.000000</td>
+      <td>62.000000</td>
+      <td>0.997835</td>
+      <td>3.400000</td>
+      <td>0.730000</td>
+      <td>11.100000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>15.900000</td>
+      <td>1.580000</td>
+      <td>1.000000</td>
+      <td>15.500000</td>
+      <td>0.611000</td>
+      <td>72.000000</td>
+      <td>289.000000</td>
+      <td>1.003690</td>
+      <td>4.010000</td>
+      <td>2.000000</td>
+      <td>14.900000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>看到二氧化硫的极端值引人注目,但经过查阅资料.二氧化硫是一种已经保存了数百年的葡萄酒防腐剂.考虑到它可能对健康和葡萄酒本身的性质产生不利影响,因此有一项有关此方面的规定.在欧洲,该浓度更严格,而在美国,该浓度可超过300.于是不进行异常值处理.</p>
+<h2 id="多元分析-变量之间的关系"><a href="#多元分析-变量之间的关系" class="headerlink" title="多元分析-变量之间的关系"></a>多元分析-变量之间的关系</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Comento para ahorrar espacio de archivo con la generación de este gráfico</span></span><br><span class="line">sns.<span class="built_in">set</span>()</span><br><span class="line">sns.pairplot(data.iloc[:,<span class="number">0</span>:], hue=<span class="string">&#x27;quality&#x27;</span>, height=<span class="number">3.0</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_20_0.png" alt="png"></p>
+<p>可以看到变量之间的关系大部分是线性的,并且来自正态分布(citric acid除外),但是在存在非典型值(离群值)和某些不对称性的情况下,在这种情况下最好坚持使用Spearman相关系数,而不是Pearson相关系数.</p>
+<script type="math/tex; mode=display">\rho = \frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sqrt(\sum_i(x_i-\bar{x})^2\sum_i(y_i-\bar{y})^2)}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spearman_corr = data.corr(method=<span class="string">&#x27;spearman&#x27;</span>)</span><br><span class="line">spearman_corr</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fixed acidity</th>
+      <td>1.000000</td>
+      <td>-0.278282</td>
+      <td>0.661708</td>
+      <td>0.220701</td>
+      <td>0.250904</td>
+      <td>-0.175137</td>
+      <td>-0.088417</td>
+      <td>0.623071</td>
+      <td>-0.706674</td>
+      <td>0.212654</td>
+      <td>-0.066576</td>
+      <td>0.114084</td>
+    </tr>
+    <tr>
+      <th>volatile acidity</th>
+      <td>-0.278282</td>
+      <td>1.000000</td>
+      <td>-0.610259</td>
+      <td>0.032386</td>
+      <td>0.158770</td>
+      <td>0.021163</td>
+      <td>0.094110</td>
+      <td>0.025014</td>
+      <td>0.233572</td>
+      <td>-0.325584</td>
+      <td>-0.224932</td>
+      <td>-0.380647</td>
+    </tr>
+    <tr>
+      <th>citric acid</th>
+      <td>0.661708</td>
+      <td>-0.610259</td>
+      <td>1.000000</td>
+      <td>0.176417</td>
+      <td>0.112577</td>
+      <td>-0.076452</td>
+      <td>0.009400</td>
+      <td>0.352285</td>
+      <td>-0.548026</td>
+      <td>0.331074</td>
+      <td>0.096456</td>
+      <td>0.213481</td>
+    </tr>
+    <tr>
+      <th>residual sugar</th>
+      <td>0.220701</td>
+      <td>0.032386</td>
+      <td>0.176417</td>
+      <td>1.000000</td>
+      <td>0.212959</td>
+      <td>0.074618</td>
+      <td>0.145375</td>
+      <td>0.422266</td>
+      <td>-0.089971</td>
+      <td>0.038332</td>
+      <td>0.116548</td>
+      <td>0.032048</td>
+    </tr>
+    <tr>
+      <th>chlorides</th>
+      <td>0.250904</td>
+      <td>0.158770</td>
+      <td>0.112577</td>
+      <td>0.212959</td>
+      <td>1.000000</td>
+      <td>0.000805</td>
+      <td>0.130033</td>
+      <td>0.411390</td>
+      <td>-0.234361</td>
+      <td>0.020825</td>
+      <td>-0.284504</td>
+      <td>-0.189922</td>
+    </tr>
+    <tr>
+      <th>free sulfur dioxide</th>
+      <td>-0.175137</td>
+      <td>0.021163</td>
+      <td>-0.076452</td>
+      <td>0.074618</td>
+      <td>0.000805</td>
+      <td>1.000000</td>
+      <td>0.789698</td>
+      <td>-0.041178</td>
+      <td>0.115679</td>
+      <td>0.045862</td>
+      <td>-0.081367</td>
+      <td>-0.056901</td>
+    </tr>
+    <tr>
+      <th>total sulfur dioxide</th>
+      <td>-0.088417</td>
+      <td>0.094110</td>
+      <td>0.009400</td>
+      <td>0.145375</td>
+      <td>0.130033</td>
+      <td>0.789698</td>
+      <td>1.000000</td>
+      <td>0.129332</td>
+      <td>-0.009841</td>
+      <td>-0.000504</td>
+      <td>-0.257806</td>
+      <td>-0.196735</td>
+    </tr>
+    <tr>
+      <th>density</th>
+      <td>0.623071</td>
+      <td>0.025014</td>
+      <td>0.352285</td>
+      <td>0.422266</td>
+      <td>0.411390</td>
+      <td>-0.041178</td>
+      <td>0.129332</td>
+      <td>1.000000</td>
+      <td>-0.312055</td>
+      <td>0.161478</td>
+      <td>-0.462445</td>
+      <td>-0.177074</td>
+    </tr>
+    <tr>
+      <th>pH</th>
+      <td>-0.706674</td>
+      <td>0.233572</td>
+      <td>-0.548026</td>
+      <td>-0.089971</td>
+      <td>-0.234361</td>
+      <td>0.115679</td>
+      <td>-0.009841</td>
+      <td>-0.312055</td>
+      <td>1.000000</td>
+      <td>-0.080306</td>
+      <td>0.179932</td>
+      <td>-0.043672</td>
+    </tr>
+    <tr>
+      <th>sulphates</th>
+      <td>0.212654</td>
+      <td>-0.325584</td>
+      <td>0.331074</td>
+      <td>0.038332</td>
+      <td>0.020825</td>
+      <td>0.045862</td>
+      <td>-0.000504</td>
+      <td>0.161478</td>
+      <td>-0.080306</td>
+      <td>1.000000</td>
+      <td>0.207330</td>
+      <td>0.377060</td>
+    </tr>
+    <tr>
+      <th>alcohol</th>
+      <td>-0.066576</td>
+      <td>-0.224932</td>
+      <td>0.096456</td>
+      <td>0.116548</td>
+      <td>-0.284504</td>
+      <td>-0.081367</td>
+      <td>-0.257806</td>
+      <td>-0.462445</td>
+      <td>0.179932</td>
+      <td>0.207330</td>
+      <td>1.000000</td>
+      <td>0.478532</td>
+    </tr>
+    <tr>
+      <th>quality</th>
+      <td>0.114084</td>
+      <td>-0.380647</td>
+      <td>0.213481</td>
+      <td>0.032048</td>
+      <td>-0.189922</td>
+      <td>-0.056901</td>
+      <td>-0.196735</td>
+      <td>-0.177074</td>
+      <td>-0.043672</td>
+      <td>0.377060</td>
+      <td>0.478532</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>使用热力图来更明显的表示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">12</span>))</span><br><span class="line">sns.heatmap(spearman_corr, xticklabels=spearman_corr.columns, yticklabels=spearman_corr.columns, center=<span class="number">0</span>, annot=<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_25_0.png" alt="png"></p>
+<p>我们将对质量进行不同级别的分类,并更深入地研究与质量最相关的一些变量.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bins = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]</span><br><span class="line">labels = [<span class="string">&#x27;bad&#x27;</span>, <span class="string">&#x27;normal&#x27;</span>, <span class="string">&#x27;good&#x27;</span>]</span><br><span class="line">df = data</span><br><span class="line">df[<span class="string">&#x27;quality&#x27;</span>] = pd.cut(df[<span class="string">&#x27;quality&#x27;</span>], bins=bins, labels=labels)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(df[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_28_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.<span class="built_in">set</span>()</span><br><span class="line">sns.violinplot(x=df[<span class="string">&#x27;quality&#x27;</span>], y=df[<span class="string">&#x27;alcohol&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_29_0.png" alt="png"></p>
+<p>据专家介绍,酒精度不是质量的决定因素.但是,这次我们看到优质葡萄酒的酒精度较高,但分布范围在8.5和15.5之间.</p>
+<h2 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h2><p>在这种情况下，我们将测试劣质和优质葡萄酒之间的平均酒精度差异是否显着。<br>H0：中度劣质酒=中度优质酒，H1：中度劣质酒不等于中度优质酒</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bad_wines = df[df[<span class="string">&#x27;quality&#x27;</span>] == <span class="string">&#x27;bad&#x27;</span>]</span><br><span class="line">good_wines = df[df[<span class="string">&#x27;quality&#x27;</span>] == <span class="string">&#x27;good&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;低质量葡萄酒的平均酒精度:&#x27;</span>, bad_wines[<span class="string">&#x27;alcohol&#x27;</span>].mean())</span><br><span class="line">print(<span class="string">&#x27;样本大小:&#x27;</span>, <span class="built_in">len</span>(bad_wines))</span><br><span class="line">print(<span class="string">&#x27;样本方差:&#x27;</span>, bad_wines[<span class="string">&#x27;alcohol&#x27;</span>].var())</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;高品质葡萄酒的平均酒精度:&#x27;</span>, good_wines[<span class="string">&#x27;alcohol&#x27;</span>].mean())</span><br><span class="line">print(<span class="string">&#x27;样本大小:&#x27;</span>, <span class="built_in">len</span>(good_wines))</span><br><span class="line">print(<span class="string">&#x27;样本方差:&#x27;</span>, good_wines[<span class="string">&#x27;alcohol&#x27;</span>].var())</span><br></pre></td></tr></table></figure>
+<pre><code>低质量葡萄酒的平均酒精度: 10.215873015873019
+样本大小: 63
+样本方差: 0.8430504352278546
+高品质葡萄酒的平均酒精度: 12.094444444444445
+样本大小: 18
+样本方差: 1.4982026143790845
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">fig.add_subplot(<span class="number">121</span>)</span><br><span class="line">sns.distplot(bad_wines[<span class="string">&#x27;alcohol&#x27;</span>])</span><br><span class="line"></span><br><span class="line">fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">sns.distplot(good_wines[<span class="string">&#x27;alcohol&#x27;</span>])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_34_0.png" alt="png"></p>
+<p>使用t检验确定p值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line">stats.ttest_ind(bad_wines[<span class="string">&#x27;alcohol&#x27;</span>], good_wines[<span class="string">&#x27;alcohol&#x27;</span>], equal_var=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-6.043728039271945, pvalue=3.828280408239352e-06)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">se = math.sqrt((bad_wines[<span class="string">&#x27;alcohol&#x27;</span>].var() / <span class="built_in">len</span>(bad_wines)) + (good_wines[<span class="string">&#x27;alcohol&#x27;</span>].var() / <span class="built_in">len</span>(good_wines)))</span><br><span class="line">print(<span class="string">&#x27;两组之间均值差异的标准误为:&#x27;</span>, se)</span><br></pre></td></tr></table></figure>
+<pre><code>两组之间均值差异的标准误为: 0.3108299076934851
+</code></pre><p>因此我们拒绝原假设.我们可以说,劣质和优质葡萄酒组的平均酒精度之间的差异在统计上是显着的,并且不太可能是偶然的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;quality&#x27;</span>] = pd.Categorical(df[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">df_color = df[<span class="string">&#x27;quality&#x27;</span>].cat.codes</span><br><span class="line">df = df.drop(<span class="string">&#x27;quality&#x27;</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h1 id="葡萄酒预测模型"><a href="#葡萄酒预测模型" class="headerlink" title="葡萄酒预测模型"></a>葡萄酒预测模型</h1><h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder, RobustScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix, roc_auc_score, accuracy_score, classification_report</span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> RandomOverSampler, SMOTE</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">import</span> graphviz</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line">y = data[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line"></span><br><span class="line">X = data.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.read_csv(<span class="string">&#x27;winequality-red.csv&#x27;</span>)</span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]</span><br><span class="line">labels = [<span class="string">&#x27;bad&#x27;</span>, <span class="string">&#x27;normal&#x27;</span>, <span class="string">&#x27;good&#x27;</span>]</span><br><span class="line">df1[<span class="string">&#x27;quality&#x27;</span>] = pd.cut(df1[<span class="string">&#x27;quality&#x27;</span>], bins=bins, labels=labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df1[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df1.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=<span class="number">.1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtc = DecisionTreeClassifier(max_leaf_nodes=<span class="number">20</span>, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtc.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>DecisionTreeClassifier(max_leaf_nodes=20, random_state=1)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dot_data = tree.export_graphviz(dtc,out_file=<span class="literal">None</span>,filled=<span class="literal">True</span>,rounded=<span class="literal">True</span>,special_characters=<span class="literal">True</span>)</span><br><span class="line">graph = graphviz.Source(dot_data)</span><br><span class="line">graph.render(<span class="string">&quot;winequality-red.dot&quot;</span>,<span class="string">&quot;img/&quot;</span>,view=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;img\\winequality-red.dot.pdf&#39;
+</code></pre><p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/1.JPG" alt="jupyter"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dt_pred = dtc.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&#x27;一些预测是:&#x27;</span>, <span class="built_in">list</span>(dt_pred[:<span class="number">5</span>]))</span><br><span class="line">print(<span class="string">&#x27;与目标相比:&#x27;</span>, <span class="built_in">list</span>(y_valid[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>一些预测是: [&#39;normal&#39;, &#39;normal&#39;, &#39;normal&#39;, &#39;normal&#39;, &#39;bad&#39;]
+与目标相比: [&#39;normal&#39;, &#39;normal&#39;, &#39;normal&#39;, &#39;normal&#39;, &#39;normal&#39;]
+</code></pre><p>混淆矩阵的每一列代表了预测类别,每一列的总数表示预测为该类别的数据的数目;每一行代表了数据的真实归属类别,每一列的数据总数表示该类别的数据实例的数目.每一列中的数值表示真实数据被预测为该类的数目.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, dt_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  1,   1,   9],
+       [  0,   0,   0],
+       [  1,   1, 147]], dtype=int64)
+</code></pre><script type="math/tex; mode=display">Accuracy=\frac{TP+TN}{TP+FP+TN+FN}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accuracy_score(y_valid, dt_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>0.925
+</code></pre><p>精确率(precision):<script type="math/tex">p=\frac{TP}{TP+FP}</script></p>
+<p>召回率(recall):<script type="math/tex">r=\frac{TP}{TP+TN}</script></p>
+<p>f1-score综合考虑精确率和召回率,是它们的加权调和平均值:<script type="math/tex">F1-score=\frac{p*r}{2(p+r)}=\frac{2*TP}{2*TP+FP+FN}</script></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dt_report = classification_report(y_valid, dt_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_dt_report = pd.DataFrame(dt_report).transpose()</span><br><span class="line">df_dt_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.500000</td>
+      <td>0.090909</td>
+      <td>0.153846</td>
+      <td>11.000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.942308</td>
+      <td>0.986577</td>
+      <td>0.963934</td>
+      <td>149.000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.925000</td>
+      <td>0.925000</td>
+      <td>0.925000</td>
+      <td>0.925</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.480769</td>
+      <td>0.359162</td>
+      <td>0.372594</td>
+      <td>160.000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.911899</td>
+      <td>0.925000</td>
+      <td>0.908241</td>
+      <td>160.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>可以看到,如果直接使用原数据进行决策树分类,效果十分不好.</p>
+<h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf = RandomForestClassifier(n_estimators=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>RandomForestClassifier()
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf_pred = rf.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  0,  11],
+       [  0, 149]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accuracy_score(y_valid, rf_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>0.93125
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf_report = classification_report(y_valid, rf_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf_report = pd.DataFrame(rf_report).transpose()</span><br><span class="line">df_rf_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>11.00000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.931250</td>
+      <td>1.00000</td>
+      <td>0.964401</td>
+      <td>149.00000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.931250</td>
+      <td>0.93125</td>
+      <td>0.931250</td>
+      <td>0.93125</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.465625</td>
+      <td>0.50000</td>
+      <td>0.482201</td>
+      <td>160.00000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.867227</td>
+      <td>0.93125</td>
+      <td>0.898099</td>
+      <td>160.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>从原则上讲,我们发现随机森林将在我们要解决的任务中表现更好,能够预测葡萄酒的质量.为了尝试改进此模型,我们将在处理参数和变量工程的同时执行一系列转换.<br>首先,由于我们的数据集中有许多极值,因此我们将使用健壮的归一化器来查看模型发生了什么.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scaler = RobustScaler()</span><br><span class="line"></span><br><span class="line">X_train = scaler.fit_transform(X_train)</span><br><span class="line">X_valid = scaler.transform(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rf.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">rf_pred = rf.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  0,  11],
+       [  0, 149]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf_report = classification_report(y_valid, rf_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf_report = pd.DataFrame(rf_report).transpose()</span><br><span class="line">df_rf_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>11.00000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.931250</td>
+      <td>1.00000</td>
+      <td>0.964401</td>
+      <td>149.00000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.931250</td>
+      <td>0.93125</td>
+      <td>0.931250</td>
+      <td>0.93125</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.465625</td>
+      <td>0.50000</td>
+      <td>0.482201</td>
+      <td>160.00000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.867227</td>
+      <td>0.93125</td>
+      <td>0.898099</td>
+      <td>160.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>我们看不到改善,或者至少看不到改善.<br>再尝试采取以下pca降维分类</p>
+<h3 id="pca降维分类"><a href="#pca降维分类" class="headerlink" title="pca降维分类"></a>pca降维分类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 选择某类模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 实例化模型并初始化超参数</span></span><br><span class="line">model = PCA(n_components=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df2 = pd.read_csv(<span class="string">&#x27;winequality-red.csv&#x27;</span>)</span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]</span><br><span class="line">labels = [<span class="string">&#x27;bad&#x27;</span>, <span class="string">&#x27;normal&#x27;</span>, <span class="string">&#x27;good&#x27;</span>]</span><br><span class="line">df2[<span class="string">&#x27;quality&#x27;</span>] = pd.cut(df2[<span class="string">&#x27;quality&#x27;</span>], bins=bins, labels=labels)</span><br><span class="line">y = df2[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df2.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model.fit(X)</span><br><span class="line"><span class="comment"># 4. 将数据转化到2维</span></span><br><span class="line">X_2D = model.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">&#x27;PCA1&#x27;</span>] = X_2D[:, <span class="number">0</span>]</span><br><span class="line">df2[<span class="string">&#x27;PCA2&#x27;</span>] = X_2D[:, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">sns.lmplot(<span class="string">&quot;PCA1&quot;</span>, <span class="string">&quot;PCA2&quot;</span>, hue=<span class="string">&#x27;quality&#x27;</span>, data=df2, fit_reg=<span class="literal">False</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_77_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+      <th>PCA1</th>
+      <th>PCA2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>-13.224905</td>
+      <td>-2.023900</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>22.037724</td>
+      <td>4.408322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>7.162673</td>
+      <td>-2.501461</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>13.430063</td>
+      <td>-1.951122</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>-13.224905</td>
+      <td>-2.023900</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>虽然效果不是很好,但依然能看到一丝丝分类效果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 选择某类模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.mixture <span class="keyword">import</span> GaussianMixture <span class="keyword">as</span> GMM</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 实例化模型并初始化超参数</span></span><br><span class="line">model = GMM(n_components=<span class="number">3</span>, covariance_type=<span class="string">&#x27;full&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 拟合数据</span></span><br><span class="line">model.fit(X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 预测分类</span></span><br><span class="line">y_gmm = model.predict(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">&#x27;cluster&#x27;</span>] = y_gmm</span><br><span class="line"></span><br><span class="line">sns.lmplot(<span class="string">&quot;PCA1&quot;</span>, <span class="string">&quot;PCA2&quot;</span>, data=df2, hue=<span class="string">&#x27;quality&#x27;</span>, col=<span class="string">&#x27;cluster&#x27;</span>, fit_reg=<span class="literal">False</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_81_0.png" alt="png"></p>
+<p>观察下发现,通过PCA降维也无法较好地分类数据.再尝试一下使用pca降维后的数据的随机森林模型,虽然大概率效果也是不好的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model = PCA(n_components=<span class="number">3</span>)</span><br><span class="line">model.fit(X)</span><br><span class="line">X_3D = model.transform(X)</span><br><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X_3D, y, test_size=<span class="number">.1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-39.37039099,  -4.3349813 ,  -1.38034898],
+       [ 69.70432912, -20.59201076,  -1.91079585],
+       [-28.52718363,  -1.66474028,  -0.62783094],
+       ...,
+       [ -0.08198556,  15.54080102,  -0.49077994],
+       [-28.85292702,   1.53818006,  -1.46563661],
+       [ 20.30034305,   5.81273274,  -0.69573033]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rf = RandomForestClassifier(n_estimators=<span class="number">100</span>)</span><br><span class="line">rf.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>RandomForestClassifier()
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rf_pred = rf.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  0,   0,  10],
+       [  0,   1,   2],
+       [  0,   0, 147]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accuracy_score(y_valid, rf_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>0.925
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf_report = classification_report(y_valid, rf_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf_report = pd.DataFrame(rf_report).transpose()</span><br><span class="line">df_rf_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>1.000000</td>
+      <td>0.333333</td>
+      <td>0.500000</td>
+      <td>3.000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.924528</td>
+      <td>1.000000</td>
+      <td>0.960784</td>
+      <td>147.000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.925000</td>
+      <td>0.925000</td>
+      <td>0.925000</td>
+      <td>0.925</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.641509</td>
+      <td>0.444444</td>
+      <td>0.486928</td>
+      <td>160.000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.868160</td>
+      <td>0.925000</td>
+      <td>0.892096</td>
+      <td>160.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>pca降维后也是同样的问题</p>
+<p>分析一下,在这个问题中,一个类别比其他两个类别大得多.与”good”或”bad”相比,”normal”类别的记录更多.</p>
+<p>这是不平衡分类问题(不平衡)的情况.在这些情况下,仅考虑”准确性”不是一个好主意,这一次准确性或许不是衡量我们模型性能的好指标.</p>
+<p>接下来,我将在质量范围内创建更多类别,以尝试使数据集更加平衡,并且模型可以更好地预测一个或另一个类别.另一种选择是过采样.</p>
+<h3 id="增加类别和过采样"><a href="#增加类别和过采样" class="headerlink" title="增加类别和过采样"></a>增加类别和过采样</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.read_csv(<span class="string">&#x27;winequality-red.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bins = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">10</span>]</span><br><span class="line">labels = [<span class="string">&#x27;bad&#x27;</span>, <span class="string">&#x27;normal&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;very good&#x27;</span>]</span><br><span class="line">df3[<span class="string">&#x27;quality&#x27;</span>] = pd.cut(df3[<span class="string">&#x27;quality&#x27;</span>], bins=bins, labels=labels)</span><br><span class="line">df3.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>good</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(df3[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_94_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df3[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df3.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=<span class="number">.33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rf3 = RandomForestClassifier()</span><br><span class="line"></span><br><span class="line">rf3.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">rf3_pred = rf3.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf3_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  1,   8,  14,   0],
+       [  0, 148,  45,  16],
+       [  0,  45, 185,   1],
+       [  0,  27,   2,  36]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf3_report = classification_report(y_valid, rf2_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf3_report = pd.DataFrame(rf3_report).transpose()</span><br><span class="line">df_rf3_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.632653</td>
+      <td>0.707763</td>
+      <td>0.668103</td>
+      <td>219.000000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.702128</td>
+      <td>0.778302</td>
+      <td>0.738255</td>
+      <td>212.000000</td>
+    </tr>
+    <tr>
+      <th>very good</th>
+      <td>0.729167</td>
+      <td>0.460526</td>
+      <td>0.564516</td>
+      <td>76.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.515987</td>
+      <td>0.486648</td>
+      <td>0.492719</td>
+      <td>528.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.649278</td>
+      <td>0.672348</td>
+      <td>0.654788</td>
+      <td>528.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.read_csv(<span class="string">&#x27;winequality-red.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bins = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">10</span>]</span><br><span class="line">labels = [<span class="string">&#x27;bad&#x27;</span>, <span class="string">&#x27;normal&#x27;</span>, <span class="string">&#x27;good&#x27;</span>, <span class="string">&#x27;very good&#x27;</span>]</span><br><span class="line">df3[<span class="string">&#x27;quality&#x27;</span>] = pd.cut(df3[<span class="string">&#x27;quality&#x27;</span>], bins=bins, labels=labels)</span><br><span class="line">df3.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>good</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(df3[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_102_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df3[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df3.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=<span class="number">.33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rf3 = RandomForestClassifier()</span><br><span class="line"></span><br><span class="line">rf3.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">rf3_pred = rf3.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf3_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  0,   5,  17,   0],
+       [  1, 163,  42,   6],
+       [  0,  45, 174,   2],
+       [  0,  38,   6,  29]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf3_report = classification_report(y_valid, rf3_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf3_report = pd.DataFrame(rf3_report).transpose()</span><br><span class="line">df_rf3_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>1.000000</td>
+      <td>0.043478</td>
+      <td>0.083333</td>
+      <td>23.000000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.649123</td>
+      <td>0.708134</td>
+      <td>0.677346</td>
+      <td>209.000000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.752033</td>
+      <td>0.800866</td>
+      <td>0.775681</td>
+      <td>231.000000</td>
+    </tr>
+    <tr>
+      <th>very good</th>
+      <td>0.679245</td>
+      <td>0.553846</td>
+      <td>0.610169</td>
+      <td>65.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.700758</td>
+      <td>0.700758</td>
+      <td>0.700758</td>
+      <td>0.700758</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.770100</td>
+      <td>0.526581</td>
+      <td>0.536632</td>
+      <td>528.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.713138</td>
+      <td>0.700758</td>
+      <td>0.686222</td>
+      <td>528.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>创建新类别后,我们看到准确性指标有所提高,F1也有所提高. </p>
+<p>但是,该模型仍然无法判断”bad”类型. </p>
+<p>随着验证数据集的大小增加，结果也有所改善.</p>
+<p>问题还是出在每个类别中样本的大小.</p>
+<h2 id="feature-engineering"><a href="#feature-engineering" class="headerlink" title="feature engineering"></a>feature engineering</h2><p>与质量最相关的变量是挥发性酸度，硫酸盐和酒精。</p>
+<p>例如，我们将从酒精中生成一个新变量，以帮助模型区分类别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df3[<span class="string">&#x27;alcohol squared&#x27;</span>] = df3[<span class="string">&#x27;alcohol&#x27;</span>] ** <span class="number">2</span></span><br><span class="line">df3.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+      <th>alcohol squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>88.36</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>good</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>88.36</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df3[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df3.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=<span class="number">.33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rf2.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">rf2_pred = rf2.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf2_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  0,   8,  15,   1],
+       [  0, 145,  54,  14],
+       [  0,  53, 167,   1],
+       [  0,  23,   7,  40]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf2_report = classification_report(y_valid, rf2_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf2_report = pd.DataFrame(rf2_report).transpose()</span><br><span class="line">df_rf2_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.633188</td>
+      <td>0.680751</td>
+      <td>0.656109</td>
+      <td>213.000000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.687243</td>
+      <td>0.755656</td>
+      <td>0.719828</td>
+      <td>221.000000</td>
+    </tr>
+    <tr>
+      <th>very good</th>
+      <td>0.714286</td>
+      <td>0.571429</td>
+      <td>0.634921</td>
+      <td>70.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.666667</td>
+      <td>0.666667</td>
+      <td>0.666667</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.508679</td>
+      <td>0.501959</td>
+      <td>0.502714</td>
+      <td>528.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.637783</td>
+      <td>0.666667</td>
+      <td>0.650147</td>
+      <td>528.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="重新采样-Re-sampling"><a href="#重新采样-Re-sampling" class="headerlink" title="重新采样(Re-sampling)"></a>重新采样(Re-sampling)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df4 = df3.copy()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df4.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>quality</th>
+      <th>alcohol squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>88.36</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>2.6</td>
+      <td>0.098</td>
+      <td>25.0</td>
+      <td>67.0</td>
+      <td>0.9968</td>
+      <td>3.20</td>
+      <td>0.68</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>0.76</td>
+      <td>0.04</td>
+      <td>2.3</td>
+      <td>0.092</td>
+      <td>15.0</td>
+      <td>54.0</td>
+      <td>0.9970</td>
+      <td>3.26</td>
+      <td>0.65</td>
+      <td>9.8</td>
+      <td>normal</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2</td>
+      <td>0.28</td>
+      <td>0.56</td>
+      <td>1.9</td>
+      <td>0.075</td>
+      <td>17.0</td>
+      <td>60.0</td>
+      <td>0.9980</td>
+      <td>3.16</td>
+      <td>0.58</td>
+      <td>9.8</td>
+      <td>good</td>
+      <td>96.04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4</td>
+      <td>0.70</td>
+      <td>0.00</td>
+      <td>1.9</td>
+      <td>0.076</td>
+      <td>11.0</td>
+      <td>34.0</td>
+      <td>0.9978</td>
+      <td>3.51</td>
+      <td>0.56</td>
+      <td>9.4</td>
+      <td>normal</td>
+      <td>88.36</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df4.columns</span><br></pre></td></tr></table></figure>
+<pre><code>Index([&#39;fixed acidity&#39;, &#39;volatile acidity&#39;, &#39;citric acid&#39;, &#39;residual sugar&#39;,
+       &#39;chlorides&#39;, &#39;free sulfur dioxide&#39;, &#39;total sulfur dioxide&#39;, &#39;density&#39;,
+       &#39;pH&#39;, &#39;sulphates&#39;, &#39;alcohol&#39;, &#39;quality&#39;, &#39;alcohol squared&#39;],
+      dtype=&#39;object&#39;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df4[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df4.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=<span class="number">.33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ros = RandomOverSampler(random_state=<span class="number">0</span>)</span><br><span class="line">X_train_resampled, y_train_resampled = ros.fit_resample(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(y_train_resampled)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_124_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rf2.fit(X_train_resampled, y_train_resampled)</span><br><span class="line"></span><br><span class="line">rf2_pred = rf2.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf2_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  4,   6,  11,   0],
+       [  0, 137,  50,  24],
+       [  2,  49, 166,   4],
+       [  0,  24,   3,  48]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf2_report = classification_report(y_valid, rf2_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf2_report = pd.DataFrame(rf2_report).transpose()</span><br><span class="line">df_rf2_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.666667</td>
+      <td>0.190476</td>
+      <td>0.296296</td>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.634259</td>
+      <td>0.649289</td>
+      <td>0.641686</td>
+      <td>211.000000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.721739</td>
+      <td>0.751131</td>
+      <td>0.736142</td>
+      <td>221.000000</td>
+    </tr>
+    <tr>
+      <th>very good</th>
+      <td>0.631579</td>
+      <td>0.640000</td>
+      <td>0.635762</td>
+      <td>75.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.663561</td>
+      <td>0.557724</td>
+      <td>0.577471</td>
+      <td>528.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.671783</td>
+      <td>0.672348</td>
+      <td>0.666643</td>
+      <td>528.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="使用另一种称为SMOTE的过采样算法"><a href="#使用另一种称为SMOTE的过采样算法" class="headerlink" title="使用另一种称为SMOTE的过采样算法:"></a>使用另一种称为SMOTE的过采样算法:</h3><p>SMOTE（Synthetic Minority Oversampling Technique），合成少数类过采样技术．它是基于随机过采样算法的一种改进方案，由于随机过采样采取简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使得模型学习到的信息过于特别(Specific)而不够泛化(General)，SMOTE算法的基本思想是对少数类样本进行分析并根据少数类样本人工合成新样本添加到数据集中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sm = SMOTE(random_state=<span class="number">42</span>, k_neighbors=<span class="number">8</span>)</span><br><span class="line">X_train_res, y_train_res = sm.fit_resample(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(y_train_res)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_131_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train_res.value_counts()</span><br></pre></td></tr></table></figure>
+<pre><code>very good    460
+good         460
+normal       460
+bad          460
+Name: quality, dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train_res.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity</th>
+      <th>volatile acidity</th>
+      <th>citric acid</th>
+      <th>residual sugar</th>
+      <th>chlorides</th>
+      <th>free sulfur dioxide</th>
+      <th>total sulfur dioxide</th>
+      <th>density</th>
+      <th>pH</th>
+      <th>sulphates</th>
+      <th>alcohol</th>
+      <th>alcohol squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.1</td>
+      <td>0.58</td>
+      <td>0.23</td>
+      <td>2.5</td>
+      <td>0.044</td>
+      <td>16.0</td>
+      <td>70.0</td>
+      <td>0.99352</td>
+      <td>3.46</td>
+      <td>0.65</td>
+      <td>12.5</td>
+      <td>156.25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.3</td>
+      <td>0.58</td>
+      <td>0.13</td>
+      <td>2.9</td>
+      <td>0.096</td>
+      <td>14.0</td>
+      <td>63.0</td>
+      <td>0.99840</td>
+      <td>3.17</td>
+      <td>0.62</td>
+      <td>9.1</td>
+      <td>82.81</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.6</td>
+      <td>0.42</td>
+      <td>0.53</td>
+      <td>3.3</td>
+      <td>0.105</td>
+      <td>33.0</td>
+      <td>98.0</td>
+      <td>1.00100</td>
+      <td>3.20</td>
+      <td>0.95</td>
+      <td>9.2</td>
+      <td>84.64</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.8</td>
+      <td>0.42</td>
+      <td>0.21</td>
+      <td>2.5</td>
+      <td>0.092</td>
+      <td>33.0</td>
+      <td>88.0</td>
+      <td>0.99823</td>
+      <td>3.19</td>
+      <td>0.52</td>
+      <td>9.2</td>
+      <td>84.64</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.6</td>
+      <td>0.85</td>
+      <td>0.05</td>
+      <td>1.4</td>
+      <td>0.045</td>
+      <td>12.0</td>
+      <td>88.0</td>
+      <td>0.99240</td>
+      <td>3.56</td>
+      <td>0.82</td>
+      <td>12.9</td>
+      <td>166.41</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rf2.fit(X_train_res, y_train_res)</span><br><span class="line"></span><br><span class="line">rf2_pred = rf2.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, rf2_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[  8,   7,   6,   0],
+       [  5, 130,  45,  31],
+       [ 10,  42, 162,   7],
+       [  0,  18,   2,  55]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rf2_report = classification_report(y_valid, rf2_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_rf2_report = pd.DataFrame(rf2_report).transpose()</span><br><span class="line">df_rf2_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bad</th>
+      <td>0.347826</td>
+      <td>0.380952</td>
+      <td>0.363636</td>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>good</th>
+      <td>0.659898</td>
+      <td>0.616114</td>
+      <td>0.637255</td>
+      <td>211.000000</td>
+    </tr>
+    <tr>
+      <th>normal</th>
+      <td>0.753488</td>
+      <td>0.733032</td>
+      <td>0.743119</td>
+      <td>221.000000</td>
+    </tr>
+    <tr>
+      <th>very good</th>
+      <td>0.591398</td>
+      <td>0.733333</td>
+      <td>0.654762</td>
+      <td>75.000000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+      <td>0.672348</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.588153</td>
+      <td>0.615858</td>
+      <td>0.599693</td>
+      <td>528.000000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.676929</td>
+      <td>0.672348</td>
+      <td>0.673170</td>
+      <td>528.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<p>相对于原来的结果,改善还是较为明显的,对于”bad”的F1系数有较多的增长</p>
+<p>我们继续使用目标来设计变量，然后将其转换为二进制变量。</p>
+<h2 id="逻辑回归-Logistic-regression"><a href="#逻辑回归-Logistic-regression" class="headerlink" title="逻辑回归(Logistic regression)"></a>逻辑回归(Logistic regression)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5 = pd.read_csv(<span class="string">&#x27;winequality-red.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5[<span class="string">&#x27;quality&#x27;</span>] = df5.quality.apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">5</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5[<span class="string">&#x27;quality&#x27;</span>].head()</span><br></pre></td></tr></table></figure>
+<pre><code>0    0
+1    0
+2    0
+3    1
+4    0
+Name: quality, dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(df5[<span class="string">&#x27;quality&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/Maxwellprof.github.io/2021/01/27/Data-vis-homework/output_143_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df5[<span class="string">&#x27;quality&#x27;</span>]</span><br><span class="line">X = df5.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logit = LogisticRegression()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logit.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">logit_pred = logit.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, logit_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[134,  56],
+       [ 49, 161]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">logit_report = classification_report(y_valid, logit_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_logit_report = pd.DataFrame(logit_report).transpose()</span><br><span class="line">df_logit_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.732240</td>
+      <td>0.705263</td>
+      <td>0.718499</td>
+      <td>190.0000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.741935</td>
+      <td>0.766667</td>
+      <td>0.754098</td>
+      <td>210.0000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.737500</td>
+      <td>0.737500</td>
+      <td>0.737500</td>
+      <td>0.7375</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.737088</td>
+      <td>0.735965</td>
+      <td>0.736299</td>
+      <td>400.0000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.737330</td>
+      <td>0.737500</td>
+      <td>0.737189</td>
+      <td>400.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roc_auc_score(y_valid, logit_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>0.7359649122807017
+</code></pre><h2 id="变量转换"><a href="#变量转换" class="headerlink" title="变量转换"></a>变量转换</h2><p>我再次包含酒精度平方的变量，以帮助模型更好地区分类别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df5[<span class="string">&#x27;alcohol squared&#x27;</span>] = df5.alcohol ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = df5.quality</span><br><span class="line">X = df5.drop(<span class="string">&#x27;quality&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_valid, y_train, y_valid = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logit2 = LogisticRegression()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logit2.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">logit2_pred = logit2.predict(X_valid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">confusion_matrix(y_valid, logit2_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[125,  47],
+       [ 64, 164]], dtype=int64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">logit2_report = classification_report(y_valid, logit2_pred, output_dict=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">df_logit2_report = pd.DataFrame(logit2_report).transpose()</span><br><span class="line">df_logit2_report</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.661376</td>
+      <td>0.726744</td>
+      <td>0.692521</td>
+      <td>172.0000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.777251</td>
+      <td>0.719298</td>
+      <td>0.747153</td>
+      <td>228.0000</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.722500</td>
+      <td>0.722500</td>
+      <td>0.722500</td>
+      <td>0.7225</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.719313</td>
+      <td>0.723021</td>
+      <td>0.719837</td>
+      <td>400.0000</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.727425</td>
+      <td>0.722500</td>
+      <td>0.723661</td>
+      <td>400.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roc_auc_score(y_valid, logit2_pred)</span><br></pre></td></tr></table></figure>
+<pre><code>0.7230212158302733
+</code></pre><p>在像我们这样的不平衡数据集中,准确性不是一个足够的指标.目的是提高精度(和整个F1分数),直到达到可接受的水平.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="数据性质"><a href="#数据性质" class="headerlink" title="数据性质"></a>数据性质</h2><h3 id="单变量分析-1"><a href="#单变量分析-1" class="headerlink" title="单变量分析"></a>单变量分析</h3><ul>
+<li>绘制单变量分布图</li>
+<li>绘制各个变量和质量的关系</li>
+<li>各个变量的小提琴图和箱型图</li>
+</ul>
+<h3 id="多元分析"><a href="#多元分析" class="headerlink" title="多元分析"></a>多元分析</h3><ul>
+<li>各个变量的相关系数</li>
+<li>各个变量间的散点图</li>
+<li>热力图</li>
+</ul>
+<h3 id="其他工作"><a href="#其他工作" class="headerlink" title="其他工作"></a>其他工作</h3><ul>
+<li>检查离群值</li>
+<li>针对于酒精变量和质量的关系进行T分布假设检验</li>
+</ul>
+<h1 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h1><p>将质量分成<code>bad</code>,<code>normal</code>,<code>good</code>三个类别先进行决策树和随机森林模型预测,并且可视化决策树</p>
+<p>虽然获得了总体的较高的<code>Accuray</code>,但对于<code>bad</code>,<code>normal</code>类别的<code>Precision</code>和<code>F1-score</code>很低,故分析其原因</p>
+<p>先对数据进行PCA降维分类,降成2维进行可视化,再使用预测模型.</p>
+<p>分析一下,在这个问题中,一个类别比其他两个类别大得多.与<code>good</code>或<code>bad</code>相比,<code>normal</code>类别的记录更多.</p>
+<p>这是不平衡分类问题(不平衡)的情况.在这些情况下,仅考虑<code>Accuray</code>不是一个好主意,这一次准确性或许不是衡量我们模型性能的好指标.</p>
+<p>接下来,我将在质量范围内创建更多类别,以尝试使数据集更加平衡,并且模型可以更好地预测一个或另一个类别.另一种选择是过采样.</p>
+<h3 id="增加类别"><a href="#增加类别" class="headerlink" title="增加类别"></a>增加类别</h3><p>对质量进行重新划分,增加了一个<code>very good</code>的类别</p>
+<h3 id="增加特征"><a href="#增加特征" class="headerlink" title="增加特征"></a>增加特征</h3><p>由于酒精和质量的相关系数最大,因此从酒精中增加一个新变量,来帮助模型分类</p>
+<h3 id="重新采样-Re-sampling-1"><a href="#重新采样-Re-sampling-1" class="headerlink" title="重新采样(Re-sampling)"></a>重新采样(Re-sampling)</h3><p>从<code>imblearn.over_sampling</code>中导入<code>RandomOverSampler</code>来进行重新采样</p>
+<h4 id="SMOTE算法"><a href="#SMOTE算法" class="headerlink" title="SMOTE算法"></a>SMOTE算法</h4><p>从<code>imblearn.over_sampling</code>中导入<code>SMOTE</code></p>
+<p>使用另一种称为SMOTE的过采样算法:</p>
+<p>SMOTE（Synthetic Minority Oversampling Technique），合成少数类过采样技术．它是基于随机过采样算法的一种改进方案，由于随机过采样采取简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使得模型学习到的信息过于特别(Specific)而不够泛化(General)，SMOTE算法的基本思想是对少数类样本进行分析并根据少数类样本人工合成新样本添加到数据集中</p>
+<p>最后得到的结果<code>F1-score</code>得到了明显增加</p>
+<h3 id="将质量转换为二进制变量"><a href="#将质量转换为二进制变量" class="headerlink" title="将质量转换为二进制变量"></a>将质量转换为二进制变量</h3><p>二进制转换变量后,使用逻辑回归模型,并且再次增加一个酒精平方的变量</p>
+<p>针对两个<code>0</code> <code>1</code>变量,得到了不错的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span></span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/Maxwellprof.github.io/tags/data-vis/"># data_vis</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/Maxwellprof.github.io/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Maxwellprof.github.io/2020/12/05/Asuka/">Asuka</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©  | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
